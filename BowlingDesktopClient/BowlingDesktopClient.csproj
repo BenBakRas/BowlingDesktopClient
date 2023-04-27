@@ -12,4 +12,8 @@
     <Folder Include="ServiceLayer\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\ShModels\ShModel\ShModel.csproj" />
+  </ItemGroup>
+
 </Project>
