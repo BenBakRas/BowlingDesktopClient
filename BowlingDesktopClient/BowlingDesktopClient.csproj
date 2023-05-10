@@ -9,11 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ServiceLayer\" />
+    <Compile Remove="ServiceLayer\Class1.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ShModels\ShModel\ShModel.csproj" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    <PackageReference Include="System.Windows.Forms.Ribbon35" Version="3.5.8" />
   </ItemGroup>
 
 </Project>
