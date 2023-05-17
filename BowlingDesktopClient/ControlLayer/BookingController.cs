@@ -67,6 +67,11 @@ namespace BowlingDesktopClient.ControlLayer
                 throw new Exception(response.ErrorMessage);
             }
         }
+
+        internal Task<List<Booking>?> GetAllBookingsAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
