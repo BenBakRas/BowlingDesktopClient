@@ -16,7 +16,7 @@ namespace BowlingDesktopClient.ControlLayer
             _apiService = apiService;
         }
 
-        public async Task<List<Booking>> GetAllBookingsAsync()
+        /*public async Task<List<Booking>> GetAllBookingsAsync()
         {
             ApiResponse<List<Booking>> response = await _apiService.GetBookingerAsync();
             if (response.IsSuccess)
@@ -27,7 +27,7 @@ namespace BowlingDesktopClient.ControlLayer
             {
                 throw new Exception(response.ErrorMessage);
             }
-        }
+        }   */
 
         public async Task<Booking> CreateBookingAsync(Booking booking)
         {

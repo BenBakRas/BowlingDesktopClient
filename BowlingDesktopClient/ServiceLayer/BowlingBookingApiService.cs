@@ -23,7 +23,7 @@ namespace BowlingDesktopClient.ServiceLayer
             ApiResponse<List<Booking>> response = new ApiResponse<List<Booking>>();
             try
             {
-                HttpResponseMessage httpResponse = await httpClient.GetAsync("api/bookinger");
+                HttpResponseMessage httpResponse = await httpClient.GetAsync("api/bookings");
 
                 if (httpResponse.IsSuccessStatusCode)
                 {
@@ -48,7 +48,7 @@ namespace BowlingDesktopClient.ServiceLayer
             ApiResponse<Booking> response = new ApiResponse<Booking>();
             try
             {
-                HttpResponseMessage httpResponse = await httpClient.PostAsJsonAsync("api/bookinger", booking);
+                HttpResponseMessage httpResponse = await httpClient.PostAsJsonAsync("api/bookings", booking);
 
                 if (httpResponse.IsSuccessStatusCode)
                 {
@@ -74,7 +74,7 @@ namespace BowlingDesktopClient.ServiceLayer
             ApiResponse<Booking> response = new ApiResponse<Booking>();
             try
             {
-                HttpResponseMessage httpResponse = await httpClient.PutAsJsonAsync($"api/bookinger/{id}", booking);
+                HttpResponseMessage httpResponse = await httpClient.PutAsJsonAsync($"api/bookings/{id}", booking);
 
                 if (httpResponse.IsSuccessStatusCode)
                 {
@@ -100,7 +100,7 @@ namespace BowlingDesktopClient.ServiceLayer
             ApiResponse<bool> response = new ApiResponse<bool>();
             try
             {
-                HttpResponseMessage httpResponse = await httpClient.DeleteAsync($"api/bookinger/{id}");
+                HttpResponseMessage httpResponse = await httpClient.DeleteAsync($"api/bookings/{id}");
 
                 if (httpResponse.IsSuccessStatusCode)
                 {
@@ -121,4 +121,3 @@ namespace BowlingDesktopClient.ServiceLayer
         }
     }
 }
-    // Implementer tilsvarende metoder for Price, Lane og Customer
