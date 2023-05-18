@@ -2,18 +2,26 @@
 {
     public class Price
     {
+        public double? NormalPrice { get; set; }
+        public double? SpecialPrice { get; set; }
+        public string? Weekday { get; set; }
+
+        // Empty constructor
         public Price() { }
-        public Price(int inId, double inNormalPrice, double inSpecialPrice, string inWeekday)
+
+        // Constructor with parameters
+        public Price(double? normalPrice, double? specialPrice, string? weekday)
         {
-            Id = inId;
-            NormalPrice = inNormalPrice;
-            SpecialPrice = inSpecialPrice;
-            Weekday = inWeekday;
+            NormalPrice = normalPrice;
+            SpecialPrice = specialPrice;
+            Weekday = weekday;
         }
-        public int Id { get; set; }
-        public double NormalPrice { get; set; }
-        public double SpecialPrice { get; set; }
-        public string Weekday { get; set; }
+
+        public override string ToString()
+        {
+            string text = "Normal Pris: " + NormalPrice + ". Speciel Pris: " + SpecialPrice + ". Dag på ugen: " + Weekday;
+            return text;
+        }
 
     }
 }

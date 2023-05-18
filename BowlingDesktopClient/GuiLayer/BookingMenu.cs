@@ -14,7 +14,7 @@ namespace BowlingDesktopClient.GuiLayer
 {
     public partial class BookingMenu : Form
     {
-        readonly BookingController _BookingController;
+        
 
         public BookingMenu()
         {
@@ -23,26 +23,8 @@ namespace BowlingDesktopClient.GuiLayer
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            {
-                string processBooking = "OK";
-                List<Booking>? fetchedBookings = await _BookingController.GetAllBookingsAsync();
-                if (fetchedBookings != null)
-                {
-                    if (fetchedBookings.Count >= 1)
-                    {
-                        processBooking = "Ok";
-                    }
-                    else
-                    {
-                        processBooking = "No persons found";
-                    }
-                }
-                else
-                {
-                    processBooking = "Failure: An error occurred";
-                }
-                labelProcessBooking.Text = processBooking; listBoxBookings.DataSource = fetchedBookings;
-            }
+           
+            
         }
     }
 }

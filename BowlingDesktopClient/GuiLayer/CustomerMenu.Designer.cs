@@ -28,73 +28,210 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox1.SuspendLayout();
-            this.SuspendLayout();
+            groupBox1 = new GroupBox();
+            textBox1 = new TextBox();
+            button2 = new Button();
+            button1 = new Button();
+            listBoxCustomers = new ListBox();
+            labelCustomerText = new Label();
+            groupBox2 = new GroupBox();
+            buttonSaveCustomer = new Button();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            textBoxPhone = new TextBox();
+            textBoxEmail = new TextBox();
+            textBoxLastName = new TextBox();
+            textBoxFirstName = new TextBox();
+            labelProcessSaved = new Label();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.listBox1);
-            this.groupBox1.Location = new System.Drawing.Point(20, 22);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(759, 403);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(6, 149);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(747, 244);
-            this.listBox1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(284, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Find alle";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(203, 34);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Søg";
-            this.button2.UseVisualStyleBackColor = true;
+            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(listBoxCustomers);
+            groupBox1.Location = new Point(23, 29);
+            groupBox1.Margin = new Padding(3, 4, 3, 4);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new Padding(3, 4, 3, 4);
+            groupBox1.Size = new Size(582, 537);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Find Kunder";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(191, 23);
-            this.textBox1.TabIndex = 3;
+            textBox1.Location = new Point(7, 45);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(218, 27);
+            textBox1.TabIndex = 3;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(232, 45);
+            button2.Margin = new Padding(3, 4, 3, 4);
+            button2.Name = "button2";
+            button2.Size = new Size(86, 31);
+            button2.TabIndex = 2;
+            button2.Text = "Søg";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(325, 44);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(159, 31);
+            button1.TabIndex = 1;
+            button1.Text = "Find alle";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += buttonGetCustomers_Click;
+            // 
+            // listBoxCustomers
+            // 
+            listBoxCustomers.FormattingEnabled = true;
+            listBoxCustomers.ItemHeight = 20;
+            listBoxCustomers.Location = new Point(0, 205);
+            listBoxCustomers.Margin = new Padding(3, 4, 3, 4);
+            listBoxCustomers.Name = "listBoxCustomers";
+            listBoxCustomers.Size = new Size(553, 324);
+            listBoxCustomers.TabIndex = 0;
+            // 
+            // labelCustomerText
+            // 
+            labelCustomerText.AutoSize = true;
+            labelCustomerText.Location = new Point(30, 570);
+            labelCustomerText.Name = "labelCustomerText";
+            labelCustomerText.Size = new Size(93, 20);
+            labelCustomerText.TabIndex = 1;
+            labelCustomerText.Text = "Good or Not";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(labelProcessSaved);
+            groupBox2.Controls.Add(buttonSaveCustomer);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(label2);
+            groupBox2.Controls.Add(label1);
+            groupBox2.Controls.Add(textBoxPhone);
+            groupBox2.Controls.Add(textBoxEmail);
+            groupBox2.Controls.Add(textBoxLastName);
+            groupBox2.Controls.Add(textBoxFirstName);
+            groupBox2.Location = new Point(617, 41);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(285, 525);
+            groupBox2.TabIndex = 4;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Insert Customer";
+            // 
+            // buttonSaveCustomer
+            // 
+            buttonSaveCustomer.Location = new Point(44, 328);
+            buttonSaveCustomer.Name = "buttonSaveCustomer";
+            buttonSaveCustomer.Size = new Size(125, 29);
+            buttonSaveCustomer.TabIndex = 8;
+            buttonSaveCustomer.Text = "Save Customer";
+            buttonSaveCustomer.UseVisualStyleBackColor = true;
+            buttonSaveCustomer.Click += buttonSaveCustomer_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(44, 254);
+            label4.Name = "label4";
+            label4.Size = new Size(77, 20);
+            label4.TabIndex = 7;
+            label4.Text = "Phone No.";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(44, 198);
+            label3.Name = "label3";
+            label3.Size = new Size(46, 20);
+            label3.TabIndex = 6;
+            label3.Text = "Email";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(44, 140);
+            label2.Name = "label2";
+            label2.Size = new Size(75, 20);
+            label2.TabIndex = 5;
+            label2.Text = "LastName";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(44, 82);
+            label1.Name = "label1";
+            label1.Size = new Size(76, 20);
+            label1.TabIndex = 4;
+            label1.Text = "FirstName";
+            // 
+            // textBoxPhone
+            // 
+            textBoxPhone.Location = new Point(44, 277);
+            textBoxPhone.Name = "textBoxPhone";
+            textBoxPhone.Size = new Size(125, 27);
+            textBoxPhone.TabIndex = 3;
+            // 
+            // textBoxEmail
+            // 
+            textBoxEmail.Location = new Point(44, 221);
+            textBoxEmail.Name = "textBoxEmail";
+            textBoxEmail.Size = new Size(125, 27);
+            textBoxEmail.TabIndex = 2;
+            // 
+            // textBoxLastName
+            // 
+            textBoxLastName.Location = new Point(44, 163);
+            textBoxLastName.Name = "textBoxLastName";
+            textBoxLastName.Size = new Size(125, 27);
+            textBoxLastName.TabIndex = 1;
+            // 
+            // textBoxFirstName
+            // 
+            textBoxFirstName.ForeColor = SystemColors.WindowText;
+            textBoxFirstName.Location = new Point(44, 105);
+            textBoxFirstName.Name = "textBoxFirstName";
+            textBoxFirstName.Size = new Size(125, 27);
+            textBoxFirstName.TabIndex = 0;
+            // 
+            // labelProcessSaved
+            // 
+            labelProcessSaved.AutoSize = true;
+            labelProcessSaved.Location = new Point(50, 376);
+            labelProcessSaved.Name = "labelProcessSaved";
+            labelProcessSaved.Size = new Size(15, 20);
+            labelProcessSaved.TabIndex = 9;
+            labelProcessSaved.Text = "..";
             // 
             // CustomerMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox1);
-            this.Name = "CustomerMenu";
-            this.Text = "CustomerMenu";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(914, 600);
+            Controls.Add(groupBox2);
+            Controls.Add(labelCustomerText);
+            Controls.Add(groupBox1);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "CustomerMenu";
+            Text = "CustomerMenu";
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -103,6 +240,18 @@
         private TextBox textBox1;
         private Button button2;
         private Button button1;
-        private ListBox listBox1;
+        private ListBox listBoxCustomers;
+        private Label labelCustomerText;
+        private GroupBox groupBox2;
+        private Button buttonSaveCustomer;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private TextBox textBoxPhone;
+        private TextBox textBoxEmail;
+        private TextBox textBoxLastName;
+        private TextBox textBoxFirstName;
+        private Label labelProcessSaved;
     }
 }

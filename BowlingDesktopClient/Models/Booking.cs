@@ -1,23 +1,32 @@
 ﻿namespace BowlingDesktopClient.Models
 {
-    public class Booking {
-
-
-        public Booking(){}
-        public Booking( int inId,DateTime inStartDateTime, int inHoursToPlay, int inBookingNumber, int inNoOfPlayers)
+    public class Booking
     {
-            Id = inId;
-        StartDateTime = inStartDateTime;
-        HoursToPlay = inHoursToPlay;
-        BookingNumber = inBookingNumber;
-        NoOfPlayers = inNoOfPlayers;
-    }
-        public int Id { get; set; }
         public DateTime StartDateTime { get; set; }
         public int HoursToPlay { get; set; }
-        public int BookingNumber { get; set; }
         public int NoOfPlayers { get; set; }
+        public Customer? Customer { get; set; }
 
+        // Empty constructor
+        public Booking() { }
 
+        // Constructor with parameters
+        public Booking(DateTime startDateTime, int hoursToPlay, int noOfPlayers, Customer? cutomer)
+        {
+            StartDateTime = startDateTime;
+            HoursToPlay = hoursToPlay;
+            NoOfPlayers = noOfPlayers;
+            Customer = cutomer;
+
+        }
+
+        public override string ToString()
+        {
+            string cusNavn = Customer.FirstName + " " + Customer.LastName;
+            string text = "Start tid: " + StartDateTime + ". Spille Tid: " + HoursToPlay + ". Antal spillere: " + NoOfPlayers + ". Kundens navn: " + cusNavn;
+            return text;
+        }
     }
+       
 }
+
