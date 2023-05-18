@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BowlingDesktopClient.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,8 @@ namespace BowlingDesktopClient.ServiceLayer.Interfaces
 {
     public interface IBookingAccess
     {
+        Task<List<Booking>?>? GetBookings(int id = -1);
+        Task<int> SaveBooking(Booking bookingToSave);
+
     }
 }

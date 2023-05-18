@@ -29,34 +29,45 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.buttonGetLanes = new System.Windows.Forms.Button();
+            this.buttonGetLane = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.listBoxLanes = new System.Windows.Forms.ListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelProcessSaved = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.buttonGetLanes);
+            this.groupBox1.Controls.Add(this.buttonGetLane);
             this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.listBox1);
+            this.groupBox1.Controls.Add(this.listBoxLanes);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 426);
+            this.groupBox1.Size = new System.Drawing.Size(405, 401);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Find Bane";
             // 
-            // listBox1
+            // buttonGetLanes
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(6, 171);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(764, 244);
-            this.listBox1.TabIndex = 0;
+            this.buttonGetLanes.Location = new System.Drawing.Point(261, 30);
+            this.buttonGetLanes.Name = "buttonGetLanes";
+            this.buttonGetLanes.Size = new System.Drawing.Size(132, 23);
+            this.buttonGetLanes.TabIndex = 3;
+            this.buttonGetLanes.Text = "Find alle";
+            this.buttonGetLanes.UseVisualStyleBackColor = true;
+            // 
+            // buttonGetLane
+            // 
+            this.buttonGetLane.Location = new System.Drawing.Point(164, 30);
+            this.buttonGetLane.Name = "buttonGetLane";
+            this.buttonGetLane.Size = new System.Drawing.Size(91, 23);
+            this.buttonGetLane.TabIndex = 2;
+            this.buttonGetLane.Text = "Søg";
+            this.buttonGetLane.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -65,44 +76,58 @@
             this.textBox1.Size = new System.Drawing.Size(152, 23);
             this.textBox1.TabIndex = 1;
             // 
-            // button1
+            // listBoxLanes
             // 
-            this.button1.Location = new System.Drawing.Point(164, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Søg";
-            this.button1.UseVisualStyleBackColor = true;
+            this.listBoxLanes.FormattingEnabled = true;
+            this.listBoxLanes.ItemHeight = 15;
+            this.listBoxLanes.Location = new System.Drawing.Point(6, 148);
+            this.listBoxLanes.Name = "listBoxLanes";
+            this.listBoxLanes.Size = new System.Drawing.Size(387, 244);
+            this.listBoxLanes.TabIndex = 0;
             // 
-            // button2
+            // groupBox2
             // 
-            this.button2.Location = new System.Drawing.Point(261, 30);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(132, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Find alle";
-            this.button2.UseVisualStyleBackColor = true;
+            this.groupBox2.Location = new System.Drawing.Point(430, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(358, 401);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
+            // labelProcessSaved
+            // 
+            this.labelProcessSaved.AutoSize = true;
+            this.labelProcessSaved.Location = new System.Drawing.Point(18, 416);
+            this.labelProcessSaved.Name = "labelProcessSaved";
+            this.labelProcessSaved.Size = new System.Drawing.Size(73, 15);
+            this.labelProcessSaved.TabIndex = 2;
+            this.labelProcessSaved.Text = "Good or Not";
             // 
             // LaneMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelProcessSaved);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "LaneMenu";
             this.Text = "LaneMenu";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private GroupBox groupBox1;
-        private Button button2;
-        private Button button1;
+        private Button buttonGetLanes;
+        private Button buttonGetLane;
         private TextBox textBox1;
-        private ListBox listBox1;
+        private ListBox listBoxLanes;
+        private GroupBox groupBox2;
+        private Label labelProcessSaved;
     }
 }
