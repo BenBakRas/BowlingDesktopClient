@@ -11,12 +11,12 @@
         public Booking() { }
 
         // Constructor with parameters
-        public Booking(DateTime startDateTime, int hoursToPlay, int noOfPlayers, Customer? cutomer)
+        public Booking(DateTime startDateTime, int hoursToPlay, int noOfPlayers, Customer? customer)
         {
             StartDateTime = startDateTime;
             HoursToPlay = hoursToPlay;
             NoOfPlayers = noOfPlayers;
-            Customer = cutomer;
+            Customer = customer;
 
         }
 

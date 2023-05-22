@@ -11,6 +11,9 @@ namespace BowlingDesktopClient.ServiceLayer.Interfaces
     {
         Task<List<Price>?>? GetPrices(int id = -1);
         Task<int> SavePrice(Price priceToSave);
+        Task<Price?> FindPriceById(int priceId);
+        Task<bool> UpdatePrice(int id, Price priceToUpdate);
+        Task<bool> DeletePrice(int id);
 
     }
 }

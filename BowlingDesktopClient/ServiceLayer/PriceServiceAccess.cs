@@ -13,7 +13,7 @@ namespace BowlingDesktopClient.ServiceLayer
     internal class PriceServiceAccess : IPriceAccess
     {
         readonly IServiceConnection _priceService;
-        readonly String _serviceBaseUrl = "https://localhost:7197/api/customers";
+        readonly String _serviceBaseUrl = "https://localhost:7197/api/prices";
         public PriceServiceAccess()
         {
             _priceService = new ServiceConnection(_serviceBaseUrl);
@@ -100,6 +100,71 @@ namespace BowlingDesktopClient.ServiceLayer
                 insertedPriceId = -3;
             }
             return insertedPriceId;
+        }
+        public async Task<Price?> FindPriceById(int priceId)
+        {
+            Price? foundPrice = null;
+            _priceService.UseUrl = $"{_priceService.BaseUrl}/{priceId}";
+
+            try
+            {
+                var serviceResponse = await _priceService.CallServiceGet();
+                if (serviceResponse != null && serviceResponse.IsSuccessStatusCode)
+                {
+                    var content = await serviceResponse.Content.ReadAsStringAsync();
+                    foundPrice = JsonConvert.DeserializeObject<Price>(content);
+                }
+            }
+            catch
+            {
+                foundPrice = null;
+            }
+
+            return foundPrice;
+        }
+        public async Task<bool> UpdatePrice(int id, Price priceToUpdate)
+        {
+            bool isUpdated = false;
+            _priceService.UseUrl = $"{_priceService.BaseUrl}/{id}";
+
+            try
+            {
+                var json = JsonConvert.SerializeObject(priceToUpdate);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var serviceResponse = await _priceService.CallServicePut(content);
+                if (serviceResponse != null && serviceResponse.IsSuccessStatusCode)
+                {
+                    isUpdated = true;
+                }
+            }
+            catch
+            {
+                isUpdated = false;
+            }
+
+            return isUpdated;
+        }
+
+        public async Task<bool> DeletePrice(int id)
+        {
+            bool isDeleted = false;
+            _priceService.UseUrl = $"{_priceService.BaseUrl}/{id}";
+
+            try
+            {
+                var serviceResponse = await _priceService.CallServiceDelete();
+                if (serviceResponse != null && serviceResponse.IsSuccessStatusCode)
+                {
+                    isDeleted = true;
+                }
+            }
+            catch
+            {
+                isDeleted = false;
+            }
+
+            return isDeleted;
         }
     }
 }

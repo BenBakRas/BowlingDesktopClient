@@ -13,10 +13,15 @@
         {
             LaneNumber = inLaneNumber;
         }
+        // Constructor with Id and LaneNumber parameters
+        public Lane(int id, int? inLaneNumber) : this(inLaneNumber)
+        {
+            Id = id;
+        }
 
         public override string ToString()
         {
-            string text = "Bane nummer: " + LaneNumber;
+            string text = "Bane nummer: " + LaneNumber + ". Banes ID: " + Id;
             return text;
         }
 

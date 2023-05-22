@@ -34,5 +34,40 @@ namespace BowlingDesktopClient.ControlLayer
             int insertedId = await _pAccess.SavePrice(newPrice);
             return insertedId;
         }
+
+        public async Task<Price?> FindPriceById(int priceId)
+        {
+            Price? foundPrice = null;
+
+            if (_pAccess != null)
+            {
+                foundPrice = await _pAccess.FindPriceById(priceId);
+            }
+
+            return foundPrice;
+        }
+        public async Task<bool> UpdatePrice(int id, Price priceToUpdate)
+        {
+            bool isUpdated = false;
+
+            if (_pAccess != null)
+            {
+                isUpdated = await _pAccess.UpdatePrice(id, priceToUpdate);
+            }
+
+            return isUpdated;
+        }
+
+        public async Task<bool> DeletePrice(int id)
+        {
+            bool isDeleted = false;
+
+            if (_pAccess != null)
+            {
+                isDeleted = await _pAccess.DeletePrice(id);
+            }
+
+            return isDeleted;
+        }
     }
 }

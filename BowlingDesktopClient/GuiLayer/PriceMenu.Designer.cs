@@ -28,81 +28,279 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.SuspendLayout();
+            groupBox1 = new GroupBox();
+            buttonCreatePriceMenu = new Button();
+            labelProcessText = new Label();
+            buttonFindAllPrices = new Button();
+            button1 = new Button();
+            textBoxFindBy = new TextBox();
+            listBoxPrices = new ListBox();
+            groupBox2 = new GroupBox();
+            label3 = new Label();
+            textBoxPriceId = new TextBox();
+            textBoxWeekday = new TextBox();
+            textBoxSpecialPrice = new TextBox();
+            textBoxNormalPrice = new TextBox();
+            labelWeekday = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            buttonSavePrice = new Button();
+            groupBox3 = new GroupBox();
+            textBoxPriceToDelete = new TextBox();
+            label4 = new Label();
+            buttonPriceToDelete = new Button();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.listBox1);
-            this.groupBox1.Location = new System.Drawing.Point(15, 14);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(773, 424);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            groupBox1.Controls.Add(buttonCreatePriceMenu);
+            groupBox1.Controls.Add(labelProcessText);
+            groupBox1.Controls.Add(buttonFindAllPrices);
+            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(textBoxFindBy);
+            groupBox1.Controls.Add(listBoxPrices);
+            groupBox1.Location = new Point(17, 19);
+            groupBox1.Margin = new Padding(3, 4, 3, 4);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new Padding(3, 4, 3, 4);
+            groupBox1.Size = new Size(562, 565);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Find Priser";
             // 
-            // listBox1
+            // buttonCreatePriceMenu
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(6, 165);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(761, 244);
-            this.listBox1.TabIndex = 0;
+            buttonCreatePriceMenu.Location = new Point(427, 31);
+            buttonCreatePriceMenu.Name = "buttonCreatePriceMenu";
+            buttonCreatePriceMenu.Size = new Size(114, 29);
+            buttonCreatePriceMenu.TabIndex = 5;
+            buttonCreatePriceMenu.Text = "Opret Priser";
+            buttonCreatePriceMenu.UseVisualStyleBackColor = true;
+            buttonCreatePriceMenu.Click += buttonCreatePriceMenu_Click;
             // 
-            // textBox1
+            // labelProcessText
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(169, 23);
-            this.textBox1.TabIndex = 1;
+            labelProcessText.AutoSize = true;
+            labelProcessText.Location = new Point(7, 528);
+            labelProcessText.Name = "labelProcessText";
+            labelProcessText.Size = new Size(93, 20);
+            labelProcessText.TabIndex = 4;
+            labelProcessText.Text = "Good or Not";
+            // 
+            // buttonFindAllPrices
+            // 
+            buttonFindAllPrices.Location = new Point(299, 31);
+            buttonFindAllPrices.Name = "buttonFindAllPrices";
+            buttonFindAllPrices.Size = new Size(94, 29);
+            buttonFindAllPrices.TabIndex = 3;
+            buttonFindAllPrices.Text = "Find alle";
+            buttonFindAllPrices.UseVisualStyleBackColor = true;
+            buttonFindAllPrices.Click += buttonFindAllPrices_Click;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(181, 22);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Søg";
-            this.button1.UseVisualStyleBackColor = true;
+            button1.Location = new Point(207, 29);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(86, 31);
+            button1.TabIndex = 2;
+            button1.Text = "Søg";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
-            // button2
+            // textBoxFindBy
             // 
-            this.button2.Location = new System.Drawing.Point(262, 21);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Find alle";
-            this.button2.UseVisualStyleBackColor = true;
+            textBoxFindBy.Location = new Point(7, 29);
+            textBoxFindBy.Margin = new Padding(3, 4, 3, 4);
+            textBoxFindBy.Name = "textBoxFindBy";
+            textBoxFindBy.Size = new Size(193, 27);
+            textBoxFindBy.TabIndex = 1;
+            // 
+            // listBoxPrices
+            // 
+            listBoxPrices.FormattingEnabled = true;
+            listBoxPrices.ItemHeight = 20;
+            listBoxPrices.Location = new Point(10, 100);
+            listBoxPrices.Margin = new Padding(3, 4, 3, 4);
+            listBoxPrices.Name = "listBoxPrices";
+            listBoxPrices.Size = new Size(546, 424);
+            listBoxPrices.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(textBoxPriceId);
+            groupBox2.Controls.Add(textBoxWeekday);
+            groupBox2.Controls.Add(textBoxSpecialPrice);
+            groupBox2.Controls.Add(textBoxNormalPrice);
+            groupBox2.Controls.Add(labelWeekday);
+            groupBox2.Controls.Add(label2);
+            groupBox2.Controls.Add(label1);
+            groupBox2.Controls.Add(buttonSavePrice);
+            groupBox2.Location = new Point(611, 19);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(301, 330);
+            groupBox2.TabIndex = 1;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Opdater prissæt";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(6, 82);
+            label3.Name = "label3";
+            label3.Size = new Size(285, 20);
+            label3.TabIndex = 8;
+            label3.Text = "Skriv ID'et på den pris som skal opdateres";
+            // 
+            // textBoxPriceId
+            // 
+            textBoxPriceId.Location = new Point(84, 105);
+            textBoxPriceId.Name = "textBoxPriceId";
+            textBoxPriceId.Size = new Size(125, 27);
+            textBoxPriceId.TabIndex = 7;
+            // 
+            // textBoxWeekday
+            // 
+            textBoxWeekday.Location = new Point(84, 264);
+            textBoxWeekday.Name = "textBoxWeekday";
+            textBoxWeekday.Size = new Size(125, 27);
+            textBoxWeekday.TabIndex = 6;
+            // 
+            // textBoxSpecialPrice
+            // 
+            textBoxSpecialPrice.Location = new Point(84, 211);
+            textBoxSpecialPrice.Name = "textBoxSpecialPrice";
+            textBoxSpecialPrice.Size = new Size(125, 27);
+            textBoxSpecialPrice.TabIndex = 5;
+            // 
+            // textBoxNormalPrice
+            // 
+            textBoxNormalPrice.Location = new Point(84, 158);
+            textBoxNormalPrice.Name = "textBoxNormalPrice";
+            textBoxNormalPrice.Size = new Size(125, 27);
+            textBoxNormalPrice.TabIndex = 4;
+            // 
+            // labelWeekday
+            // 
+            labelWeekday.AutoSize = true;
+            labelWeekday.Location = new Point(103, 241);
+            labelWeekday.Name = "labelWeekday";
+            labelWeekday.Size = new Size(95, 20);
+            labelWeekday.TabIndex = 3;
+            labelWeekday.Text = "Dag på ugen";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(105, 188);
+            label2.Name = "label2";
+            label2.Size = new Size(84, 20);
+            label2.TabIndex = 2;
+            label2.Text = "Speciel Pris";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(105, 135);
+            label1.Name = "label1";
+            label1.Size = new Size(86, 20);
+            label1.TabIndex = 1;
+            label1.Text = "Normal Pris";
+            // 
+            // buttonSavePrice
+            // 
+            buttonSavePrice.Location = new Point(105, 288);
+            buttonSavePrice.Name = "buttonSavePrice";
+            buttonSavePrice.Size = new Size(94, 29);
+            buttonSavePrice.TabIndex = 0;
+            buttonSavePrice.Text = "Gem Pris";
+            buttonSavePrice.UseVisualStyleBackColor = true;
+            buttonSavePrice.Click += buttonSavePrice_Click;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(buttonPriceToDelete);
+            groupBox3.Controls.Add(textBoxPriceToDelete);
+            groupBox3.Controls.Add(label4);
+            groupBox3.Location = new Point(611, 355);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(301, 229);
+            groupBox3.TabIndex = 2;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Slet Prissæt";
+            // 
+            // textBoxPriceToDelete
+            // 
+            textBoxPriceToDelete.Location = new Point(84, 64);
+            textBoxPriceToDelete.Name = "textBoxPriceToDelete";
+            textBoxPriceToDelete.Size = new Size(125, 27);
+            textBoxPriceToDelete.TabIndex = 10;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(21, 32);
+            label4.Name = "label4";
+            label4.Size = new Size(280, 20);
+            label4.TabIndex = 9;
+            label4.Text = "Skriv ID'et på det prissæt som skal slettes";
+            // 
+            // buttonPriceToDelete
+            // 
+            buttonPriceToDelete.Location = new Point(105, 109);
+            buttonPriceToDelete.Name = "buttonPriceToDelete";
+            buttonPriceToDelete.Size = new Size(94, 29);
+            buttonPriceToDelete.TabIndex = 11;
+            buttonPriceToDelete.Text = "Slet Prissæt";
+            buttonPriceToDelete.UseVisualStyleBackColor = true;
+            buttonPriceToDelete.Click += buttonPriceToDelete_Click;
             // 
             // PriceMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox1);
-            this.Name = "PriceMenu";
-            this.Text = "PriceMenu";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(924, 607);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "PriceMenu";
+            Text = "PriceMenu";
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
 
         private GroupBox groupBox1;
-        private Button button2;
         private Button button1;
-        private TextBox textBox1;
-        private ListBox listBox1;
+        private TextBox textBoxFindBy;
+        private ListBox listBoxPrices;
+        private Button buttonFindAllPrices;
+        private Label labelProcessText;
+        private Button buttonCreatePriceMenu;
+        private GroupBox groupBox2;
+        private TextBox textBoxWeekday;
+        private TextBox textBoxSpecialPrice;
+        private TextBox textBoxNormalPrice;
+        private Label labelWeekday;
+        private Label label2;
+        private Label label1;
+        private Button buttonSavePrice;
+        private TextBox textBoxPriceId;
+        private Label label3;
+        private GroupBox groupBox3;
+        private Label label4;
+        private TextBox textBoxPriceToDelete;
+        private Button buttonPriceToDelete;
     }
 }

@@ -11,6 +11,6 @@ namespace BowlingDesktopClient.ServiceLayer.Interfaces
     {
         Task<List<Booking>?>? GetBookings(int id = -1);
         Task<int> SaveBooking(Booking bookingToSave);
-
+        Task<List<Booking>?> FindBookingsByCustomerPhone(string phone);
     }
 }

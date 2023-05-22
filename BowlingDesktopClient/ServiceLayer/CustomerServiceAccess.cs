@@ -99,7 +99,72 @@ namespace BowlingDesktopClient.ServiceLayer
             }
             return insertedCustomerId;
         }
+        public async Task<bool> DeleteCustomer(int customerId)
+        {
+            bool isDeleted = false;
 
+            _customerService.UseUrl = $"{_customerService.BaseUrl}/{customerId}";
+
+            try
+            {
+                var serviceResponse = await _customerService.CallServiceDelete();
+                if (serviceResponse != null && serviceResponse.IsSuccessStatusCode)
+                {
+                    isDeleted = true;
+                }
+            }
+            catch
+            {
+                isDeleted = false;
+            }
+
+            return isDeleted;
+        }
+        public async Task<bool> UpdateCustomer(Customer customerToUpdate)
+        {
+            bool isUpdated = false;
+
+            _customerService.UseUrl = $"{_customerService.BaseUrl}/{customerToUpdate.Id}";
+
+            try
+            {
+                var json = JsonConvert.SerializeObject(customerToUpdate);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var serviceResponse = await _customerService.CallServicePut(content);
+                if (serviceResponse != null && serviceResponse.IsSuccessStatusCode)
+                {
+                    isUpdated = true;
+                }
+            }
+            catch
+            {
+                isUpdated = false;
+            }
+
+            return isUpdated;
+        }
+        public async Task<Customer?> FindCustomerByPhone(string phone)
+        {
+            _customerService.UseUrl = $"{_customerService.BaseUrl}/{phone}";
+
+            try
+            {
+                var serviceResponse = await _customerService.CallServiceGet();
+                if (serviceResponse != null && serviceResponse.IsSuccessStatusCode)
+                {
+                    var content = await serviceResponse.Content.ReadAsStringAsync();
+                    Customer foundCustomer = JsonConvert.DeserializeObject<Customer>(content);
+                    return foundCustomer;
+                }
+            }
+            catch
+            {
+                // Handle any exceptions here
+            }
+
+            return null; // Return null if the customer is not found or if there was an error
+        }
 
     }
 }

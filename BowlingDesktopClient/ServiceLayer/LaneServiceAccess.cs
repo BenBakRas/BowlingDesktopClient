@@ -12,7 +12,7 @@ namespace BowlingDesktopClient.ServiceLayer
     public class LaneServiceAccess : ILaneAccess
     {
         readonly IServiceConnection _LaneService;
-        readonly String _serviceBaseUrl = "https://localhost:7197/api/customers";
+        readonly String _serviceBaseUrl = "https://localhost:7197/api/lanes";
         public LaneServiceAccess()
         {
             _LaneService = new ServiceConnection(_serviceBaseUrl);
@@ -99,6 +99,73 @@ namespace BowlingDesktopClient.ServiceLayer
                 insertedLaneId = -3;
             }
             return insertedLaneId;
+        }
+        public async Task<Lane?> FindLaneById(int laneId)
+        {
+            Lane? foundLane = null;
+            _LaneService.UseUrl = $"{_LaneService.BaseUrl}/{laneId}";
+
+            try
+            {
+                var serviceResponse = await _LaneService.CallServiceGet();
+                if (serviceResponse != null && serviceResponse.IsSuccessStatusCode)
+                {
+                    var content = await serviceResponse.Content.ReadAsStringAsync();
+                    foundLane = JsonConvert.DeserializeObject<Lane>(content);
+                }
+            }
+            catch
+            {
+                foundLane = null;
+            }
+
+            return foundLane;
+        }
+        public async Task<bool> UpdateLane(int id, Lane laneToUpdate) 
+        {
+            bool isUpdated = false;
+
+            _LaneService.UseUrl = $"{_LaneService.BaseUrl}/{id}";
+
+            try
+            {
+                var json = JsonConvert.SerializeObject(laneToUpdate);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var serviceResponse = await _LaneService.CallServicePut(content);
+                if (serviceResponse != null && serviceResponse.IsSuccessStatusCode)
+                {
+                    isUpdated = true;
+                }
+            }
+            catch
+            {
+                isUpdated = false;
+            }
+
+            return isUpdated;
+        }
+
+        public async Task<bool> DeleteLane(int laneId)
+        {
+            bool isDeleted = false;
+
+            _LaneService.UseUrl = $"{_LaneService.BaseUrl}/{laneId}";
+
+            try
+            {
+                var serviceResponse = await _LaneService.CallServiceDelete();
+                if (serviceResponse != null && serviceResponse.IsSuccessStatusCode)
+                {
+                    isDeleted = true;
+                }
+            }
+            catch
+            {
+                isDeleted = false;
+            }
+
+            return isDeleted;
         }
     }
 }

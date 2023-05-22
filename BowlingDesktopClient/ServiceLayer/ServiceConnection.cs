@@ -40,14 +40,24 @@ namespace BowlingDesktopClient.ServiceLayer
             return hrm;
         }
 
-        public Task<HttpResponseMessage?> CallServicePut(StringContent postJson)
+        public async Task<HttpResponseMessage?> CallServicePut(StringContent postJson)
         {
-            throw new NotImplementedException();
+            HttpResponseMessage? hrm = null;
+            if (UseUrl != null)
+            {
+                hrm = await HttpEnabler.PutAsync(UseUrl, postJson);
+            }
+            return hrm;
         }
 
-        public Task<HttpResponseMessage?> CallServiceDelete()
+        public async Task<HttpResponseMessage?> CallServiceDelete()
         {
-            throw new NotImplementedException();
+            HttpResponseMessage? hrm = null;
+            if (UseUrl != null)
+            {
+                hrm = await HttpEnabler.DeleteAsync(UseUrl);
+            }
+            return hrm;
         }
     }
 }

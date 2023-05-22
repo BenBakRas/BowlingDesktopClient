@@ -34,5 +34,40 @@ namespace BowlingDesktopClient.ControlLayer
             int insertedId = await _lAccess.SaveLane(newLane);
             return insertedId;
         }
+        public async Task<Lane?> FindLaneById(int laneId)
+        {
+            Lane? foundLane = null;
+
+            if (_lAccess != null)
+            {
+                foundLane = await _lAccess.FindLaneById(laneId);
+            }
+
+            return foundLane;
+        }
+        public async Task<bool> UpdateLane(int id, Lane laneToUpdate) 
+        {
+            bool isUpdated = false;
+
+            if (_lAccess != null)
+            {
+                isUpdated = await _lAccess.UpdateLane(id, laneToUpdate); 
+            }
+
+            return isUpdated;
+        }
+
+
+        public async Task<bool> DeleteLane(int laneId)
+        {
+            bool isDeleted = false;
+
+            if (_lAccess != null)
+            {
+                isDeleted = await _lAccess.DeleteLane(laneId);
+            }
+
+            return isDeleted;
+        }
     }
 }

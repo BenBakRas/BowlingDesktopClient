@@ -28,11 +28,29 @@ namespace BowlingDesktopClient.ControlLayer
             return foundBookings;
         }
 
-        /*public async Task<int> SaveBooking(int hoursToPlay, int noOfPlayers, Customer? cutomer)
+        public async Task<int> SaveBooking(DateTime StartDateTime, int hoursToPlay, int noOfPlayers, Customer customer)
         {
-            Booking newBooking = new(hoursToPlay, noOfPlayers, cutomer);
+
+            if (customer == null)
+            {
+                // Customer not found, handle the scenario as needed
+                return -1;
+            }
+
+            Booking newBooking = new Booking(StartDateTime, hoursToPlay, noOfPlayers, customer);
             int insertedId = await _bAccess.SaveBooking(newBooking);
             return insertedId;
-        }*/
+        }
+        public async Task<List<Booking>?> FindBookingByPhone(string customerPNO)
+        {
+            List<Booking>? foundBookings = null;
+
+            if (_bAccess != null)
+            {
+                foundBookings = await _bAccess.FindBookingsByCustomerPhone(customerPNO);
+            }
+
+            return foundBookings;
+        }
     }
 }

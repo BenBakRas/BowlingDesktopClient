@@ -21,8 +21,8 @@ namespace BowlingDesktopClient.GuiLayer
 
             _customerControl = new CustomerControl();
         }
-
-        private async void buttonGetCustomers_Click(object sender, EventArgs e)
+     
+        private async void buttonGetCustomers_Click_1(object sender, EventArgs e)
         {
             string processText = "Good or Not";
             List<Customer>? fethcedCustomers = await _customerControl.GetAllCustomers();
@@ -45,7 +45,32 @@ namespace BowlingDesktopClient.GuiLayer
             listBoxCustomers.DataSource = fethcedCustomers;
         }
 
-        private async void buttonSaveCustomer_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            string processText = "Good or Not";
+            List<Customer> fetchedCustomer = new List<Customer> { };
+            Customer cus = await _customerControl.FindCustomerByPhone(textBoxFindBy.Text);
+            fetchedCustomer.Add(cus);
+            if (fetchedCustomer != null)
+            {
+                if (fetchedCustomer != null)
+                {
+                    processText = "Ok";
+                }
+                else
+                {
+                    processText = "No customers found";
+                }
+            }
+            else
+            {
+                processText = "Failure: An error occurred";
+            }
+            labelCustomerText.Text = processText;
+            listBoxCustomers.DataSource = fetchedCustomer;
+        }
+
+        private async void buttonSaveCustomer_Click_1(object sender, EventArgs e)
         {
             int insertedId = -1;
             string messageText;
@@ -81,5 +106,7 @@ namespace BowlingDesktopClient.GuiLayer
             return isValidInput;
         }
     }
+    
 }
+
 
