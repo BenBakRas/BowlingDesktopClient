@@ -44,24 +44,16 @@ namespace BowlingDesktopClient.ControlLayer
             return false;
         }
 
-        public async Task<bool> UpdateCustomer(string fName, string lName, string email, string mPhone)
+        public async Task<bool> UpdateCustomer(int id, Customer customerToUpdate)
         {
-            // Find the customer by ID
-            Customer? customerToUpdate = await FindCustomerByPhone(mPhone);
+            bool isUpdated = false;
 
-            if (customerToUpdate != null)
+            if (_cAccess != null)
             {
-                // Update the customer's properties
-                customerToUpdate.FirstName = fName;
-                customerToUpdate.LastName = lName;
-                customerToUpdate.Email = email;
-                customerToUpdate.Phone = mPhone;
-
-                // Call the update method in the service access layer
-                return await _cAccess.UpdateCustomer(customerToUpdate);
+                isUpdated = await _cAccess.UpdateCustomer(id, customerToUpdate);
             }
 
-            return false;
+            return isUpdated;
         }
 
         public async Task<Customer?> FindCustomerByPhone(string customerPNO)

@@ -15,13 +15,14 @@ namespace BowlingDesktopClient.GuiLayer
     public partial class CustomerMenu : Form
     {
         readonly CustomerControl _customerControl;
+        CreateCustomerMenu _ccMenu = new CreateCustomerMenu();
         public CustomerMenu()
         {
             InitializeComponent();
 
             _customerControl = new CustomerControl();
         }
-     
+
         private async void buttonGetCustomers_Click_1(object sender, EventArgs e)
         {
             string processText = "Good or Not";
@@ -70,43 +71,119 @@ namespace BowlingDesktopClient.GuiLayer
             listBoxCustomers.DataSource = fetchedCustomer;
         }
 
-        private async void buttonSaveCustomer_Click_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            int insertedId = -1;
-            string messageText;
-            // Values from testboxes must be fetched
+            _ccMenu.ShowDialog();
+        }
+
+        private async void buttonUpdateCustomer_Click(object sender, EventArgs e)
+        {
             string inFirstName = textBoxFirstName.Text;
             string inLastName = textBoxLastName.Text;
             string inEmail = textBoxEmail.Text;
             string inPhone = textBoxPhone.Text;
-            // Evaluate and act accordingly
-            if (InputIsOk(inFirstName, inLastName, inEmail, inPhone))
+            string findIdByPhone = textBoxFindIdByPhone.Text;
+
+            if (!string.IsNullOrEmpty(findIdByPhone))
             {
-                // Call the ControlLayer to get the data saved
-                insertedId = await _customerControl.SaveCustomer(inFirstName, inLastName, inEmail, inPhone);
-                messageText = (insertedId > 0) ? $"Customer saved with no {insertedId}" : "Failure: An error occurred!";
+                Customer? customerToUpdate = await _customerControl.FindCustomerByPhone(findIdByPhone);
+                if (customerToUpdate != null)
+                {
+                    // Create a new customer object to hold the updated information
+                    Customer newCustomerInfo = new Customer();
+
+                    // Update the customer object properties based on the input fields
+                    newCustomerInfo.Id = customerToUpdate.Id;
+
+                    if (!string.IsNullOrEmpty(inFirstName))
+                    {
+                        newCustomerInfo.FirstName = inFirstName;
+                    }
+                    else
+                    {
+                        newCustomerInfo.FirstName = customerToUpdate.FirstName;
+                    }
+
+                    if (!string.IsNullOrEmpty(inLastName))
+                    {
+                        newCustomerInfo.LastName = inLastName;
+                    }
+                    else
+                    {
+                        newCustomerInfo.LastName = customerToUpdate.LastName;
+                    }
+
+                    if (!string.IsNullOrEmpty(inEmail))
+                    {
+                        newCustomerInfo.Email = inEmail;
+                    }
+                    else
+                    {
+                        newCustomerInfo.Email = customerToUpdate.Email;
+                    }
+
+                    if (!string.IsNullOrEmpty(inPhone))
+                    {
+                        newCustomerInfo.Phone = inPhone;
+                    }
+                    else
+                    {
+                        newCustomerInfo.Phone = customerToUpdate.Phone;
+                    }
+
+                    bool isUpdated = await _customerControl.UpdateCustomer(customerToUpdate.Id, newCustomerInfo);
+                    if (isUpdated)
+                    {
+                        MessageBox.Show("Kunde information er blevet opdateret.");
+                        // Perform any additional actions after successful update
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fejl ved opdatering af kunden.");
+                        // Handle update failure
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Kunden blev ikke fundet.");
+                    // Handle customer not found
+                }
             }
             else
             {
-                messageText = "Please input valid informations";
+                MessageBox.Show("Indtast venligst et telefonnummer for at finde kunden.");
+                // Handle missing phone number
             }
-            // Finally put out a message saying if the saving went well 
-            labelProcessSaved.Text = messageText;
+
         }
-        private bool InputIsOk(string fName, string lName, string email, string phone)
+
+        private async void buttonDeleteCustomer_Click(object sender, EventArgs e)
         {
-            bool isValidInput = false;
-            if (!String.IsNullOrWhiteSpace(fName) && !String.IsNullOrWhiteSpace(lName) && !String.IsNullOrWhiteSpace(email) && !String.IsNullOrWhiteSpace(phone))
+            string customerId = textBoxDeleteCustomer.Text;
+
+            if (!string.IsNullOrEmpty(customerId))
             {
-                if (fName.Length > 1 && lName.Length > 1 && email.Length > 2 && email.Contains('@') && phone.Length > 1)
+                bool isDeleted = await _customerControl.DeleteCustomer(int.Parse(customerId));
+                if (isDeleted)
                 {
-                    isValidInput = true;
+                    MessageBox.Show("Kunden er blevet slettet.");
+                    // Perform any additional actions after successful deletion
+                }
+                else
+                {
+                    MessageBox.Show("Fejl ved sletning af kunden.");
+                    // Handle deletion failure
                 }
             }
-            return isValidInput;
+            else
+            {
+                MessageBox.Show("Indtast venligst en gyldig kunde-ID.");
+                // Handle missing or invalid customer ID
+            }
+
         }
     }
-    
+
 }
 
 

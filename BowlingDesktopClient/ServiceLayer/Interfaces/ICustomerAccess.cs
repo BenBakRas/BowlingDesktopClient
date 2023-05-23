@@ -12,7 +12,7 @@ namespace BowlingDesktopClient.ServiceLayer.Interfaces
         Task<List<Customer>?>? GetCustomers(int id = -1);
         Task<int> SaveCustomer(Customer customerToSave);
         public Task<bool> DeleteCustomer(int customerId);
-        public Task<bool> UpdateCustomer(Customer customerToUpdate);
+        public Task<bool> UpdateCustomer(int id, Customer customerToUpdate);
         Task<Customer?> FindCustomerByPhone(string phone);
 
 

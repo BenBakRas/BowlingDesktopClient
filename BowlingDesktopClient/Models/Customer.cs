@@ -9,7 +9,7 @@
         public string? Phone { get; set; }
 
         //Empty Conscructor
-        public Customer() { }
+        public Customer()  { }
 
         // Constructor with parameters
         public Customer(string? firstName, string? lastName, string? email, string? phone)
@@ -27,7 +27,7 @@
 
         public override string ToString()
         {
-            string text = FirstName + " " + LastName + ". Mobil No. " + Phone;
+            string text = "Kunde ID: " + Id + ". " + FirstName + " " + LastName + ". Email: " + Email + ". Mobil No. " + Phone;
             return text;
         }
     }

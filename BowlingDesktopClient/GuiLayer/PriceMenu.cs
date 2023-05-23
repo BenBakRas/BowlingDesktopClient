@@ -88,12 +88,12 @@ namespace BowlingDesktopClient.GuiLayer
 
             if (isUpdated)
             {
-                MessageBox.Show("Price updated successfully.");
+                MessageBox.Show("Price opdateret.");
                 // Perform any additional actions after successful update
             }
             else
             {
-                MessageBox.Show("Failed to update price.");
+                MessageBox.Show("Fejl ved opdatering af pris.");
                 // Handle update failure
             }
         }
@@ -133,7 +133,7 @@ namespace BowlingDesktopClient.GuiLayer
                 }
                 else
                 {
-                    processText = "No Lanes found";
+                    processText = "Ingen baner fundet";
                 }
             }
             labelProcessText.Text = processText;

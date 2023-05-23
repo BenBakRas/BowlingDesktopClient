@@ -17,55 +17,42 @@ namespace BowlingDesktopClient.ServiceLayer
             _customerService = new ServiceConnection(_serviceBaseUrl);
         }
 
-        public async Task<List<Customer>?>? GetCustomers(int id = -1)
+        public async Task<List<Customer>?> GetCustomers(int id = -1)
         {
             List<Customer>? customersFromService = null;
 
             _customerService.UseUrl = _customerService.BaseUrl;
-            bool hasValidId = (id > 0);
-            if (hasValidId)
+            if (id > 0)
             {
                 _customerService.UseUrl += id.ToString();
             }
-            if (_customerService != null)
+
+            try
             {
-                try
+                var serviceResponse = await _customerService.CallServiceGet();
+                bool wasResponse = (serviceResponse != null);
+                if (wasResponse && serviceResponse.IsSuccessStatusCode)
                 {
-                    var serviceResponse = await _customerService.CallServiceGet();
-                    bool wasResponse = (serviceResponse != null);
-                    if (wasResponse && serviceResponse.IsSuccessStatusCode)
+                    var content = await serviceResponse.Content.ReadAsStringAsync();
+                    customersFromService = JsonConvert.DeserializeObject<List<Customer>>(content);
+                }
+                else
+                {
+                    if (wasResponse && serviceResponse.StatusCode == HttpStatusCode.NoContent)
                     {
-                        var content = await serviceResponse.Content.ReadAsStringAsync();
-                        if (hasValidId)
-                        {
-                            Customer? foundCustomer = JsonConvert.DeserializeObject<Customer>(content);
-                            if (foundCustomer != null)
-                            {
-                                customersFromService = new List<Customer>() { foundCustomer };
-                            }
-                        }
-                        else
-                        {
-                            customersFromService = JsonConvert.DeserializeObject<List<Customer>>(content);
-                        }
+                        customersFromService = new List<Customer>();
                     }
                     else
                     {
-                        if (wasResponse && serviceResponse.StatusCode == System.Net.HttpStatusCode.NoContent)
-                        {
-                            customersFromService = new List<Customer>();
-                        }
-                        else
-                        {
-                            customersFromService = null;
-                        }
+                        customersFromService = null;
                     }
                 }
-                catch
-                {
-                    customersFromService = null;
-                }
             }
+            catch
+            {
+                customersFromService = null;
+            }
+
             return customersFromService;
         }
         public async Task<int> SaveCustomer(Customer customerToSave)
@@ -120,11 +107,11 @@ namespace BowlingDesktopClient.ServiceLayer
 
             return isDeleted;
         }
-        public async Task<bool> UpdateCustomer(Customer customerToUpdate)
+        public async Task<bool> UpdateCustomer(int customerId, Customer customerToUpdate)
         {
             bool isUpdated = false;
 
-            _customerService.UseUrl = $"{_customerService.BaseUrl}/{customerToUpdate.Id}";
+            _customerService.UseUrl = $"{_customerService.BaseUrl}/{customerId}";
 
             try
             {
@@ -155,6 +142,16 @@ namespace BowlingDesktopClient.ServiceLayer
                 {
                     var content = await serviceResponse.Content.ReadAsStringAsync();
                     Customer foundCustomer = JsonConvert.DeserializeObject<Customer>(content);
+
+                    // Retrieve the customer ID from the service response headers
+                    if (serviceResponse.Headers.TryGetValues("CustomerID", out var customerIdValues))
+                    {
+                        if (int.TryParse(customerIdValues.FirstOrDefault(), out var customerId))
+                        {
+                            foundCustomer.Id = customerId;
+                        }
+                    }
+
                     return foundCustomer;
                 }
             }
@@ -165,6 +162,5 @@ namespace BowlingDesktopClient.ServiceLayer
 
             return null; // Return null if the customer is not found or if there was an error
         }
-
     }
 }
