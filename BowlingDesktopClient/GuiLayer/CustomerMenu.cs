@@ -46,7 +46,7 @@ namespace BowlingDesktopClient.GuiLayer
             listBoxCustomers.DataSource = fethcedCustomers;
         }
 
-        private async void button2_Click(object sender, EventArgs e)
+        private async void button2_Click_1(object sender, EventArgs e)
         {
             string processText = "Good or Not";
             List<Customer> fetchedCustomer = new List<Customer> { };

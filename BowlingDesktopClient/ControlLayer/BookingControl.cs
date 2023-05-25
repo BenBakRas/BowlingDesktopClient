@@ -24,6 +24,17 @@ namespace BowlingDesktopClient.ControlLayer
             if (_bAccess != null)
             {
                 foundBookings = await _bAccess.GetBookings();
+
+                foreach (Booking booking in foundBookings)
+                {
+                    Booking? foundByBookingId = await _bAccess.FindBookingById(booking.Id); // Find booking using booking ID
+
+                    if (foundByBookingId != null)
+                    {
+                        booking.PriceId = foundByBookingId.PriceId; 
+                        booking.LaneId = foundByBookingId.LaneId; 
+                    }
+                }
             }
             return foundBookings;
         }
@@ -41,16 +52,39 @@ namespace BowlingDesktopClient.ControlLayer
             int insertedId = await _bAccess.SaveBooking(newBooking);
             return insertedId;
         }
-        public async Task<List<Booking>?> FindBookingByPhone(string customerPNO)
+        public async Task<List<Booking>?> FindBookingByCustomerPhone(string customerPNO)
         {
             List<Booking>? foundBookings = null;
 
             if (_bAccess != null)
             {
                 foundBookings = await _bAccess.FindBookingsByCustomerPhone(customerPNO);
+
+                foreach (Booking booking in foundBookings)
+                {
+                    Booking foundByBookingId = await _bAccess.FindBookingById(booking.Id); // Find booking using booking ID
+
+                    if (foundByBookingId != null)
+                    {
+                        booking.PriceId = foundByBookingId.PriceId; // Update priceId
+                        booking.LaneId = foundByBookingId.LaneId; // Update laneId
+                    }
+                }
             }
 
             return foundBookings;
+        }
+
+        public async Task<Booking?> FindBookingById(int bookingId)
+        {
+            Booking? foundBooking = null;
+
+            if (_bAccess != null)
+            {
+                foundBooking = await _bAccess.FindBookingById(bookingId);
+            }
+
+            return foundBooking;
         }
     }
 }

@@ -151,8 +151,6 @@ namespace BowlingDesktopClient.ServiceLayer
         }
         public async Task<Customer?> FindCustomerByPhone(string phone)
         {
-            Customer? foundCustomer = null;
-
             _customerService.UseUrl = $"{_customerService.BaseUrl}/{phone}";
 
             try
@@ -161,7 +159,18 @@ namespace BowlingDesktopClient.ServiceLayer
                 if (serviceResponse != null && serviceResponse.IsSuccessStatusCode)
                 {
                     var content = await serviceResponse.Content.ReadAsStringAsync();
-                    foundCustomer = JsonConvert.DeserializeObject<Customer>(content);
+                    Customer foundCustomer = JsonConvert.DeserializeObject<Customer>(content);
+
+                    // Retrieve the customer ID from the service response headers
+                    if (serviceResponse.Headers.TryGetValues("CustomerID", out var customerIdValues))
+                    {
+                        if (int.TryParse(customerIdValues.FirstOrDefault(), out var customerId))
+                        {
+                            foundCustomer.Id = customerId;
+                        }
+                    }
+
+                    return foundCustomer;
                 }
             }
             catch
@@ -169,7 +178,28 @@ namespace BowlingDesktopClient.ServiceLayer
                 // Handle any exceptions here
             }
 
-            return foundCustomer;
+            return null; // Return null if the customer is not found or if there was an error
+        }
+            public async Task<Booking?> FindBookingById(int id)
+        {
+            Booking? foundBooking = null;
+            _bookingService.UseUrl = $"{_bookingService.BaseUrl}/{id}";
+
+            try
+            {
+                var serviceResponse = await _bookingService.CallServiceGet();
+                if (serviceResponse != null && serviceResponse.IsSuccessStatusCode)
+                {
+                    var content = await serviceResponse.Content.ReadAsStringAsync();
+                    foundBooking = JsonConvert.DeserializeObject<Booking>(content);
+                }
+            }
+            catch
+            {
+                foundBooking = null;
+            }
+
+            return foundBooking;
         }
     }
 }

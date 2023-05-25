@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BowlingDesktopClient.ControlLayer;
+using BowlingDesktopClient.ServiceLayer.Interfaces;
 
 namespace BowlingDesktopClient.GuiLayer
 {
@@ -16,12 +17,16 @@ namespace BowlingDesktopClient.GuiLayer
     {
         readonly BookingControl _bookingControl;
         readonly CustomerControl _cusControl;
+        readonly PriceControl _priceControl;
+        readonly LaneControl _laneControl;
         public BookingMenu()
         {
             InitializeComponent();
 
             _bookingControl = new BookingControl();
             _cusControl = new CustomerControl();
+            _priceControl = new PriceControl();
+            _laneControl = new LaneControl();
         }
 
         private async void buttonCreateBooking_Click(object sender, EventArgs e)
@@ -61,28 +66,6 @@ namespace BowlingDesktopClient.GuiLayer
             }*/
         }
 
-        private async void buttonFindAll_Click(object sender, EventArgs e)
-        {
-            string processText = "Good or Not";
-            List<Booking>? fethcedBookings = await _bookingControl.GetAllBookings();
-            if (fethcedBookings != null)
-            {
-                if (fethcedBookings.Count >= 1)
-                {
-                    processText = "Ok";
-                }
-                else
-                {
-                    processText = "No Lanes found";
-                }
-            }
-            else
-            {
-                processText = "Failure: An error occurred";
-            }
-            labelProcessBooking.Text = processText;
-            listBoxBookings.DataSource = fethcedBookings;
-        }
 
         private async void buttonCreateBooking_Click_1(object sender, EventArgs e)
         {
@@ -125,10 +108,11 @@ namespace BowlingDesktopClient.GuiLayer
             return isValidInput;
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private async void buttonFindCusByPhone(object sender, EventArgs e)
         {
             string processText = "Good or Not";
-            List<Booking> fetchedBooking = await _bookingControl.FindBookingByPhone(textBoxCustomerPhone.Text);
+            string phone = textBoxFindBy.Text;
+            List<Booking>? fetchedBooking = await _bookingControl.FindBookingByCustomerPhone(phone);
             if (fetchedBooking != null)
             {
                 if (fetchedBooking != null)
@@ -147,5 +131,47 @@ namespace BowlingDesktopClient.GuiLayer
             labelProcessBooking.Text = processText;
             listBoxBookings.DataSource = fetchedBooking;
         }
+
+        private async void buttonFindAll_Click_1(object sender, EventArgs e)
+        {
+            string processText = "Good or Not";
+            List<Booking>? fetchedBookings = await _bookingControl.GetAllBookings();
+            if (fetchedBookings != null)
+            {
+                if (fetchedBookings.Count >= 1)
+                {
+                    processText = "Ok";
+
+                    // Fetch Lane and Price objects based on IDs
+                    foreach (var booking in fetchedBookings)
+                    {
+                        // Fetch Lane
+                        Lane? lane = await _laneControl.FindLaneById(booking.LaneId);
+                        if (lane != null)
+                        {
+                            booking.LaneId = lane.Id;
+                        }
+
+                        // Fetch Price
+                        Price? price = await _priceControl.FindPriceById(booking.PriceId);
+                        if (price != null)
+                        {
+                            booking.PriceId = price.Id;
+                        }
+                    }
+                }
+                else
+                {
+                    processText = "No Lanes found";
+                }
+            }
+            else
+            {
+                processText = "Failure: An error occurred";
+            }
+            labelProcessBooking.Text = processText;
+            listBoxBookings.DataSource = fetchedBookings;
+        }
+
     }
 }

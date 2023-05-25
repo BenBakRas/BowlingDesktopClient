@@ -28,205 +28,205 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            labelProcessBooking = new Label();
-            textBoxFindBy = new TextBox();
-            buttonFindAll = new Button();
-            button1 = new Button();
-            listBoxBookings = new ListBox();
-            groupBox2 = new GroupBox();
-            labelProcessCreateBooking = new Label();
-            labelProcessSaved = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            textBoxHoursToPlay = new TextBox();
-            textBoxPlayers = new TextBox();
-            textBoxCustomerPhone = new TextBox();
-            buttonCreateBooking = new Button();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
-            SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelProcessBooking = new System.Windows.Forms.Label();
+            this.textBoxFindBy = new System.Windows.Forms.TextBox();
+            this.buttonFindAll = new System.Windows.Forms.Button();
+            this.buttonFindCustomerByPhone = new System.Windows.Forms.Button();
+            this.listBoxBookings = new System.Windows.Forms.ListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelProcessCreateBooking = new System.Windows.Forms.Label();
+            this.labelProcessSaved = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxHoursToPlay = new System.Windows.Forms.TextBox();
+            this.textBoxPlayers = new System.Windows.Forms.TextBox();
+            this.textBoxCustomerPhone = new System.Windows.Forms.TextBox();
+            this.buttonCreateBooking = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(labelProcessBooking);
-            groupBox1.Controls.Add(textBoxFindBy);
-            groupBox1.Controls.Add(buttonFindAll);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(listBoxBookings);
-            groupBox1.Location = new Point(14, 16);
-            groupBox1.Margin = new Padding(3, 4, 3, 4);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(643, 568);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Find Bookinger";
+            this.groupBox1.Controls.Add(this.labelProcessBooking);
+            this.groupBox1.Controls.Add(this.textBoxFindBy);
+            this.groupBox1.Controls.Add(this.buttonFindAll);
+            this.groupBox1.Controls.Add(this.buttonFindCustomerByPhone);
+            this.groupBox1.Controls.Add(this.listBoxBookings);
+            this.groupBox1.Location = new System.Drawing.Point(14, 16);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(1037, 568);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Find Bookinger";
             // 
             // labelProcessBooking
             // 
-            labelProcessBooking.AutoSize = true;
-            labelProcessBooking.Location = new Point(7, 531);
-            labelProcessBooking.Name = "labelProcessBooking";
-            labelProcessBooking.Size = new Size(93, 20);
-            labelProcessBooking.TabIndex = 4;
-            labelProcessBooking.Text = "Good or Not";
+            this.labelProcessBooking.AutoSize = true;
+            this.labelProcessBooking.Location = new System.Drawing.Point(7, 531);
+            this.labelProcessBooking.Name = "labelProcessBooking";
+            this.labelProcessBooking.Size = new System.Drawing.Size(93, 20);
+            this.labelProcessBooking.TabIndex = 4;
+            this.labelProcessBooking.Text = "Good or Not";
             // 
             // textBoxFindBy
             // 
-            textBoxFindBy.Location = new Point(7, 44);
-            textBoxFindBy.Margin = new Padding(3, 4, 3, 4);
-            textBoxFindBy.Name = "textBoxFindBy";
-            textBoxFindBy.Size = new Size(213, 27);
-            textBoxFindBy.TabIndex = 3;
+            this.textBoxFindBy.Location = new System.Drawing.Point(7, 44);
+            this.textBoxFindBy.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxFindBy.Name = "textBoxFindBy";
+            this.textBoxFindBy.Size = new System.Drawing.Size(213, 27);
+            this.textBoxFindBy.TabIndex = 3;
             // 
             // buttonFindAll
             // 
-            buttonFindAll.Location = new Point(320, 44);
-            buttonFindAll.Margin = new Padding(3, 4, 3, 4);
-            buttonFindAll.Name = "buttonFindAll";
-            buttonFindAll.Size = new Size(158, 31);
-            buttonFindAll.TabIndex = 2;
-            buttonFindAll.Text = "Find alle";
-            buttonFindAll.UseVisualStyleBackColor = true;
-            buttonFindAll.Click += buttonFindAll_Click;
+            this.buttonFindAll.Location = new System.Drawing.Point(320, 44);
+            this.buttonFindAll.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonFindAll.Name = "buttonFindAll";
+            this.buttonFindAll.Size = new System.Drawing.Size(158, 31);
+            this.buttonFindAll.TabIndex = 2;
+            this.buttonFindAll.Text = "Find alle";
+            this.buttonFindAll.UseVisualStyleBackColor = true;
+            this.buttonFindAll.Click += new System.EventHandler(this.buttonFindAll_Click_1);
             // 
-            // button1
+            // buttonFindCustomerByPhone
             // 
-            button1.Location = new Point(227, 44);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(86, 31);
-            button1.TabIndex = 1;
-            button1.Text = "Søg";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            this.buttonFindCustomerByPhone.Location = new System.Drawing.Point(227, 44);
+            this.buttonFindCustomerByPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonFindCustomerByPhone.Name = "buttonFindCustomerByPhone";
+            this.buttonFindCustomerByPhone.Size = new System.Drawing.Size(86, 31);
+            this.buttonFindCustomerByPhone.TabIndex = 1;
+            this.buttonFindCustomerByPhone.Text = "Søg";
+            this.buttonFindCustomerByPhone.UseVisualStyleBackColor = true;
+            this.buttonFindCustomerByPhone.Click += new System.EventHandler(this.buttonFindCusByPhone);
             // 
             // listBoxBookings
             // 
-            listBoxBookings.FormattingEnabled = true;
-            listBoxBookings.ItemHeight = 20;
-            listBoxBookings.Location = new Point(7, 129);
-            listBoxBookings.Margin = new Padding(3, 4, 3, 4);
-            listBoxBookings.Name = "listBoxBookings";
-            listBoxBookings.Size = new Size(608, 384);
-            listBoxBookings.TabIndex = 0;
+            this.listBoxBookings.FormattingEnabled = true;
+            this.listBoxBookings.ItemHeight = 20;
+            this.listBoxBookings.Location = new System.Drawing.Point(7, 129);
+            this.listBoxBookings.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listBoxBookings.Name = "listBoxBookings";
+            this.listBoxBookings.Size = new System.Drawing.Size(1001, 384);
+            this.listBoxBookings.TabIndex = 0;
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(labelProcessCreateBooking);
-            groupBox2.Controls.Add(labelProcessSaved);
-            groupBox2.Controls.Add(label3);
-            groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(label1);
-            groupBox2.Controls.Add(textBoxHoursToPlay);
-            groupBox2.Controls.Add(textBoxPlayers);
-            groupBox2.Controls.Add(textBoxCustomerPhone);
-            groupBox2.Controls.Add(buttonCreateBooking);
-            groupBox2.Location = new Point(694, 16);
-            groupBox2.Margin = new Padding(3, 4, 3, 4);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(208, 568);
-            groupBox2.TabIndex = 1;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Insert Booking";
+            this.groupBox2.Controls.Add(this.labelProcessCreateBooking);
+            this.groupBox2.Controls.Add(this.labelProcessSaved);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.textBoxHoursToPlay);
+            this.groupBox2.Controls.Add(this.textBoxPlayers);
+            this.groupBox2.Controls.Add(this.textBoxCustomerPhone);
+            this.groupBox2.Controls.Add(this.buttonCreateBooking);
+            this.groupBox2.Location = new System.Drawing.Point(1106, 16);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Size = new System.Drawing.Size(208, 568);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Insert Booking";
             // 
             // labelProcessCreateBooking
             // 
-            labelProcessCreateBooking.AutoSize = true;
-            labelProcessCreateBooking.Location = new Point(52, 382);
-            labelProcessCreateBooking.Name = "labelProcessCreateBooking";
-            labelProcessCreateBooking.Size = new Size(93, 20);
-            labelProcessCreateBooking.TabIndex = 8;
-            labelProcessCreateBooking.Text = "Good or Not";
+            this.labelProcessCreateBooking.AutoSize = true;
+            this.labelProcessCreateBooking.Location = new System.Drawing.Point(52, 382);
+            this.labelProcessCreateBooking.Name = "labelProcessCreateBooking";
+            this.labelProcessCreateBooking.Size = new System.Drawing.Size(93, 20);
+            this.labelProcessCreateBooking.TabIndex = 8;
+            this.labelProcessCreateBooking.Text = "Good or Not";
             // 
             // labelProcessSaved
             // 
-            labelProcessSaved.AutoSize = true;
-            labelProcessSaved.Location = new Point(115, 405);
-            labelProcessSaved.Name = "labelProcessSaved";
-            labelProcessSaved.Size = new Size(0, 20);
-            labelProcessSaved.TabIndex = 7;
+            this.labelProcessSaved.AutoSize = true;
+            this.labelProcessSaved.Location = new System.Drawing.Point(115, 405);
+            this.labelProcessSaved.Name = "labelProcessSaved";
+            this.labelProcessSaved.Size = new System.Drawing.Size(0, 20);
+            this.labelProcessSaved.TabIndex = 7;
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(43, 243);
-            label3.Name = "label3";
-            label3.Size = new Size(123, 20);
-            label3.TabIndex = 6;
-            label3.Text = "Kundes Mobil Nr.";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(43, 243);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(123, 20);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Kundes Mobil Nr.";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(51, 188);
-            label2.Name = "label2";
-            label2.Size = new Size(98, 20);
-            label2.TabIndex = 5;
-            label2.Text = "Antal Spillere";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(51, 188);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(98, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Antal Spillere";
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(52, 133);
-            label1.Name = "label1";
-            label1.Size = new Size(88, 20);
-            label1.TabIndex = 4;
-            label1.Text = "Spille Timer";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(52, 133);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 20);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Spille Timer";
             // 
             // textBoxHoursToPlay
             // 
-            textBoxHoursToPlay.Location = new Point(31, 157);
-            textBoxHoursToPlay.Margin = new Padding(3, 4, 3, 4);
-            textBoxHoursToPlay.Name = "textBoxHoursToPlay";
-            textBoxHoursToPlay.Size = new Size(135, 27);
-            textBoxHoursToPlay.TabIndex = 3;
+            this.textBoxHoursToPlay.Location = new System.Drawing.Point(31, 157);
+            this.textBoxHoursToPlay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxHoursToPlay.Name = "textBoxHoursToPlay";
+            this.textBoxHoursToPlay.Size = new System.Drawing.Size(135, 27);
+            this.textBoxHoursToPlay.TabIndex = 3;
             // 
             // textBoxPlayers
             // 
-            textBoxPlayers.Location = new Point(31, 212);
-            textBoxPlayers.Margin = new Padding(3, 4, 3, 4);
-            textBoxPlayers.Name = "textBoxPlayers";
-            textBoxPlayers.Size = new Size(135, 27);
-            textBoxPlayers.TabIndex = 2;
+            this.textBoxPlayers.Location = new System.Drawing.Point(31, 212);
+            this.textBoxPlayers.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxPlayers.Name = "textBoxPlayers";
+            this.textBoxPlayers.Size = new System.Drawing.Size(135, 27);
+            this.textBoxPlayers.TabIndex = 2;
             // 
             // textBoxCustomerPhone
             // 
-            textBoxCustomerPhone.Location = new Point(31, 267);
-            textBoxCustomerPhone.Margin = new Padding(3, 4, 3, 4);
-            textBoxCustomerPhone.Name = "textBoxCustomerPhone";
-            textBoxCustomerPhone.Size = new Size(135, 27);
-            textBoxCustomerPhone.TabIndex = 1;
+            this.textBoxCustomerPhone.Location = new System.Drawing.Point(31, 267);
+            this.textBoxCustomerPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxCustomerPhone.Name = "textBoxCustomerPhone";
+            this.textBoxCustomerPhone.Size = new System.Drawing.Size(135, 27);
+            this.textBoxCustomerPhone.TabIndex = 1;
             // 
             // buttonCreateBooking
             // 
-            buttonCreateBooking.Location = new Point(30, 302);
-            buttonCreateBooking.Margin = new Padding(3, 4, 3, 4);
-            buttonCreateBooking.Name = "buttonCreateBooking";
-            buttonCreateBooking.Size = new Size(136, 31);
-            buttonCreateBooking.TabIndex = 0;
-            buttonCreateBooking.Text = "Opret Booking";
-            buttonCreateBooking.UseVisualStyleBackColor = true;
-            buttonCreateBooking.Click += buttonCreateBooking_Click_1;
+            this.buttonCreateBooking.Location = new System.Drawing.Point(30, 302);
+            this.buttonCreateBooking.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonCreateBooking.Name = "buttonCreateBooking";
+            this.buttonCreateBooking.Size = new System.Drawing.Size(136, 31);
+            this.buttonCreateBooking.TabIndex = 0;
+            this.buttonCreateBooking.Text = "Opret Booking";
+            this.buttonCreateBooking.UseVisualStyleBackColor = true;
             // 
             // BookingMenu
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "BookingMenu";
-            Text = "BookingMenu";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1326, 650);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Name = "BookingMenu";
+            this.Text = "BookingMenu";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -234,7 +234,7 @@
         private GroupBox groupBox1;
         private TextBox textBoxFindBy;
         private Button buttonFindAll;
-        private Button button1;
+        private Button buttonFindCustomerByPhone;
         private ListBox listBoxBookings;
         private Label labelProcessBooking;
         private GroupBox groupBox2;

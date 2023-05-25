@@ -74,7 +74,7 @@ namespace BowlingDesktopClient.GuiLayer
             _clMenu.ShowDialog();
         }
 
-        private async void buttonGetLane_Click(object sender, EventArgs e)
+        private async void buttonGetLane_Click_1(object sender, EventArgs e)
         {
             listBoxLanes.DataSource = null;
             listBoxLanes.Items.Clear();
