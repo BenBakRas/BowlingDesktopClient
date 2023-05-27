@@ -27,13 +27,13 @@ namespace BowlingDesktopClient.GuiLayer
             string messageText;
             // Values from testboxes must be fetched
             double normalPrice = double.Parse(textBoxNormalPrice.Text);
-            double specialPrice = double.Parse(textBoxSpecialPrice.Text);
+
             string weekday = textBoxWeekday.Text;
             // Evaluate and act accordingly
-            if (InputIsOk(normalPrice, specialPrice, weekday))
+            if (InputIsOk(normalPrice, weekday))
             {
                 // Call the ControlLayer to get the data saved
-                insertedId = await _priceControl.SavePrice(normalPrice, specialPrice, weekday);
+                insertedId = await _priceControl.SavePrice(normalPrice, weekday);
                 messageText = (insertedId > 0) ? $"Price saved with no {insertedId}" : "Failure: An error occurred!";
             }
             else
@@ -43,14 +43,13 @@ namespace BowlingDesktopClient.GuiLayer
             // Finally put out a message saying if the saving went well 
             labelProcessText.Text = messageText;
         }
-        private bool InputIsOk(double normalPrice, double specialPrice, string weekday)
+        private bool InputIsOk(double normalPrice, string weekday)
         {
             bool isValidInput = false;
             string np = normalPrice.ToString();
-            string sp = specialPrice.ToString();
-            if (!String.IsNullOrWhiteSpace(np) && !String.IsNullOrWhiteSpace(sp) && !String.IsNullOrWhiteSpace(weekday))
+            if (!String.IsNullOrWhiteSpace(np) && !String.IsNullOrWhiteSpace(weekday))
             {
-                if (normalPrice > 0 && specialPrice > 0 && weekday.Length > 5)
+                if (normalPrice > 0  && weekday.Length > 5)
                 {
                     isValidInput = true;
                 }

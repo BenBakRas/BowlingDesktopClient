@@ -71,12 +71,12 @@ namespace BowlingDesktopClient.GuiLayer
             listBoxCustomers.DataSource = fetchedCustomer;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             _ccMenu.ShowDialog();
         }
 
-        private async void buttonUpdateCustomer_Click(object sender, EventArgs e)
+        private async void buttonUpdateCustomer_Click_1(object sender, EventArgs e)
         {
             string inFirstName = textBoxFirstName.Text;
             string inLastName = textBoxLastName.Text;
@@ -182,7 +182,6 @@ namespace BowlingDesktopClient.GuiLayer
             }
 
         }
-
     }
 
 }

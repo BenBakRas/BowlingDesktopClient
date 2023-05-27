@@ -69,11 +69,6 @@ namespace BowlingDesktopClient.GuiLayer
             listBoxLanes.DataSource = fethcedLanes;
         }
 
-        private void buttonCreateLane_Click(object sender, EventArgs e)
-        {
-            _clMenu.ShowDialog();
-        }
-
         private async void buttonGetLane_Click_1(object sender, EventArgs e)
         {
             listBoxLanes.DataSource = null;
@@ -164,6 +159,11 @@ namespace BowlingDesktopClient.GuiLayer
                 // Failed to delete lane
                 MessageBox.Show("Fejl ved sletning.");
             }
+        }
+
+        private void buttonCreateLane_Click_1(object sender, EventArgs e)
+        {
+            _clMenu.ShowDialog();
         }
     }
 }

@@ -57,7 +57,6 @@ namespace BowlingDesktopClient.GuiLayer
 
             // Get the price details
             double? normalPrice = null;
-            double? specialPrice = null;
             string weekday = textBoxWeekday.Text;
 
             if (!string.IsNullOrWhiteSpace(textBoxNormalPrice.Text))
@@ -69,20 +68,8 @@ namespace BowlingDesktopClient.GuiLayer
                 }
                 normalPrice = parsedNormalPrice;
             }
-
-            if (!string.IsNullOrWhiteSpace(textBoxSpecialPrice.Text))
-            {
-                if (!double.TryParse(textBoxSpecialPrice.Text, out double parsedSpecialPrice))
-                {
-                    MessageBox.Show("Invalid special price.");
-                    return;
-                }
-                specialPrice = parsedSpecialPrice;
-            }
-
             // Create a new Price object with the updated details
-            Price updatedPrice = new Price(normalPrice, specialPrice, weekday);
-
+            Price updatedPrice = new Price(normalPrice, weekday);
             // Update the price using PriceControl
             bool isUpdated = await _priceControl.UpdatePrice(priceId, updatedPrice);
 
@@ -119,7 +106,7 @@ namespace BowlingDesktopClient.GuiLayer
             {
                 MessageBox.Show("Intet Prissæt eksistere med dette ID");
             }
-            else if (string.IsNullOrEmpty(price.Weekday) || price.SpecialPrice == null || price.NormalPrice == null)
+            else if (string.IsNullOrEmpty(price.Weekday) || price.NormalPrice == null)
             {
                 MessageBox.Show("Intet Prissæt eksistere med dette ID");
             }

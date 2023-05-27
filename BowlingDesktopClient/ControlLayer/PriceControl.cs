@@ -28,9 +28,9 @@ namespace BowlingDesktopClient.ControlLayer
             return foundPrices;
         }
 
-        public async Task<int> SavePrice(double? normalPrice, double? specialPrice, string? weekday)
+        public async Task<int> SavePrice(double? normalPrice, string? weekday)
         {
-            Price newPrice = new(normalPrice, specialPrice, weekday);
+            Price newPrice = new(normalPrice, weekday);
             int insertedId = await _pAccess.SavePrice(newPrice);
             return insertedId;
         }
