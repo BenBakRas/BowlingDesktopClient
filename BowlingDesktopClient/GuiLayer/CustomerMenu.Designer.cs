@@ -100,7 +100,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Søg";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.button2.Click += new System.EventHandler(this.buttonGetCusByPhone);
             // 
             // buttonGetCustomers
             // 
@@ -111,6 +111,7 @@
             this.buttonGetCustomers.TabIndex = 1;
             this.buttonGetCustomers.Text = "Find alle";
             this.buttonGetCustomers.UseVisualStyleBackColor = true;
+            this.buttonGetCustomers.Click += new System.EventHandler(this.buttonGetCustomers_Click);
             // 
             // listBoxCustomers
             // 

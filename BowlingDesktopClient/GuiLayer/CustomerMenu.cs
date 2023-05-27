@@ -23,7 +23,7 @@ namespace BowlingDesktopClient.GuiLayer
             _customerControl = new CustomerControl();
         }
 
-        private async void buttonGetCustomers_Click_1(object sender, EventArgs e)
+        private async void buttonGetCustomers_Click(object sender, EventArgs e)
         {
             string processText = "Good or Not";
             List<Customer>? fethcedCustomers = await _customerControl.GetAllCustomers();
@@ -46,7 +46,7 @@ namespace BowlingDesktopClient.GuiLayer
             listBoxCustomers.DataSource = fethcedCustomers;
         }
 
-        private async void button2_Click_1(object sender, EventArgs e)
+        private async void buttonGetCusByPhone(object sender, EventArgs e)
         {
             string processText = "Good or Not";
             List<Customer> fetchedCustomer = new List<Customer> { };
@@ -182,6 +182,7 @@ namespace BowlingDesktopClient.GuiLayer
             }
 
         }
+
     }
 
 }
