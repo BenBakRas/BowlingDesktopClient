@@ -78,15 +78,8 @@ namespace BowlingDesktopClient.ServiceLayer
 
             try
             {
-                CustomerServiceAccess csa = new CustomerServiceAccess();
-                // Find customer by phone number
-                Customer foundCustomer = await csa.FindCustomerByPhone(bookingToSave.Customer.Phone);
-
-                if (foundCustomer != null)
+                if (bookingToSave.Customer != null)
                 {
-                    // Assign the found customer to the booking
-                    bookingToSave.Customer = foundCustomer;
-
                     var json = JsonConvert.SerializeObject(bookingToSave);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -200,6 +193,29 @@ namespace BowlingDesktopClient.ServiceLayer
             }
 
             return foundBooking;
+        }
+
+        public async Task<bool> DeleteBooking(int bookingId)
+        {
+            bool isDeleted = false;
+
+                _bookingService.UseUrl = $"{_bookingService.BaseUrl}/{bookingId}";
+
+
+            try
+            {
+                var serviceResponse = await _bookingService.CallServiceDelete();
+                if (serviceResponse != null && serviceResponse.IsSuccessStatusCode)
+                {
+                    isDeleted = true;
+                }
+            }
+            catch
+            {
+                isDeleted= false;
+            }
+
+            return false; // Return false if the booking deletion fails or if there was an error
         }
     }
 }

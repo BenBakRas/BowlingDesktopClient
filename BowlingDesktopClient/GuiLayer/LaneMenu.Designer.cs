@@ -94,6 +94,7 @@
             buttonGetLane.TabIndex = 2;
             buttonGetLane.Text = "Søg";
             buttonGetLane.UseVisualStyleBackColor = true;
+            buttonGetLane.Click += buttonGetLane_Click;
             // 
             // textBoxFindBy
             // 
@@ -199,6 +200,7 @@
             buttonDeleteLane.TabIndex = 2;
             buttonDeleteLane.Text = "Slet bane";
             buttonDeleteLane.UseVisualStyleBackColor = true;
+            buttonDeleteLane.Click += buttonDeleteLane_Click_1;
             // 
             // textBoxLaneToDelete
             // 

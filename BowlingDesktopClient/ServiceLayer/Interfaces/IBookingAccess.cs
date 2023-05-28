@@ -13,5 +13,6 @@ namespace BowlingDesktopClient.ServiceLayer.Interfaces
         Task<int> SaveBooking(Booking bookingToSave);
         Task<List<Booking>?> FindBookingsByCustomerPhone(string phone);
         Task<Booking?> FindBookingById(int id);
+        Task<bool> DeleteBooking(int bookingId);
     }
 }

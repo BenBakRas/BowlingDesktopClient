@@ -69,7 +69,7 @@ namespace BowlingDesktopClient.GuiLayer
             listBoxLanes.DataSource = fethcedLanes;
         }
 
-        private async void buttonGetLane_Click_1(object sender, EventArgs e)
+        private async void buttonGetLane_Click(object sender, EventArgs e)
         {
             listBoxLanes.DataSource = null;
             listBoxLanes.Items.Clear();
@@ -82,7 +82,6 @@ namespace BowlingDesktopClient.GuiLayer
             }
             else
             {
-                lane.Id = int.Parse(textBoxFindBy.Text);
                 fetchedLane.Add(lane);
                 if (fetchedLane != null && lane.LaneNumber > 0)
                 {
@@ -142,7 +141,7 @@ namespace BowlingDesktopClient.GuiLayer
             }
         }
 
-        private async void buttonDeleteLane_Click(object sender, EventArgs e)
+        private async void buttonDeleteLane_Click_1(object sender, EventArgs e)
         {
             int laneId = int.Parse(textBoxLaneToDelete.Text);
 
@@ -165,5 +164,7 @@ namespace BowlingDesktopClient.GuiLayer
         {
             _clMenu.ShowDialog();
         }
+
+
     }
 }

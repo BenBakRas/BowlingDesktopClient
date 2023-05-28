@@ -86,5 +86,16 @@ namespace BowlingDesktopClient.ControlLayer
 
             return foundBooking;
         }
+        public async Task<bool> DeleteBooking(int bookingId)
+        {
+            bool isDeleted = false;
+
+            if (_bAccess != null)
+            {
+                isDeleted = await _bAccess.DeleteBooking(bookingId);
+            }
+
+            return isDeleted;
+        }
     }
 }

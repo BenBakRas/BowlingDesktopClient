@@ -39,16 +39,14 @@
             label3 = new Label();
             textBoxPriceId = new TextBox();
             textBoxWeekday = new TextBox();
-            textBoxSpecialPrice = new TextBox();
             textBoxNormalPrice = new TextBox();
             labelWeekday = new Label();
-            label2 = new Label();
             label1 = new Label();
             buttonSavePrice = new Button();
             groupBox3 = new GroupBox();
+            buttonPriceToDelete = new Button();
             textBoxPriceToDelete = new TextBox();
             label4 = new Label();
-            buttonPriceToDelete = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -134,10 +132,8 @@
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(textBoxPriceId);
             groupBox2.Controls.Add(textBoxWeekday);
-            groupBox2.Controls.Add(textBoxSpecialPrice);
             groupBox2.Controls.Add(textBoxNormalPrice);
             groupBox2.Controls.Add(labelWeekday);
-            groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(label1);
             groupBox2.Controls.Add(buttonSavePrice);
             groupBox2.Location = new Point(611, 19);
@@ -165,17 +161,10 @@
             // 
             // textBoxWeekday
             // 
-            textBoxWeekday.Location = new Point(84, 264);
+            textBoxWeekday.Location = new Point(84, 211);
             textBoxWeekday.Name = "textBoxWeekday";
             textBoxWeekday.Size = new Size(125, 27);
             textBoxWeekday.TabIndex = 6;
-            // 
-            // textBoxSpecialPrice
-            // 
-            textBoxSpecialPrice.Location = new Point(84, 211);
-            textBoxSpecialPrice.Name = "textBoxSpecialPrice";
-            textBoxSpecialPrice.Size = new Size(125, 27);
-            textBoxSpecialPrice.TabIndex = 5;
             // 
             // textBoxNormalPrice
             // 
@@ -187,20 +176,11 @@
             // labelWeekday
             // 
             labelWeekday.AutoSize = true;
-            labelWeekday.Location = new Point(103, 241);
+            labelWeekday.Location = new Point(96, 188);
             labelWeekday.Name = "labelWeekday";
             labelWeekday.Size = new Size(95, 20);
             labelWeekday.TabIndex = 3;
             labelWeekday.Text = "Dag på ugen";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(105, 188);
-            label2.Name = "label2";
-            label2.Size = new Size(84, 20);
-            label2.TabIndex = 2;
-            label2.Text = "Speciel Pris";
             // 
             // label1
             // 
@@ -213,7 +193,7 @@
             // 
             // buttonSavePrice
             // 
-            buttonSavePrice.Location = new Point(105, 288);
+            buttonSavePrice.Location = new Point(97, 244);
             buttonSavePrice.Name = "buttonSavePrice";
             buttonSavePrice.Size = new Size(94, 29);
             buttonSavePrice.TabIndex = 0;
@@ -233,6 +213,16 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Slet Prissæt";
             // 
+            // buttonPriceToDelete
+            // 
+            buttonPriceToDelete.Location = new Point(105, 109);
+            buttonPriceToDelete.Name = "buttonPriceToDelete";
+            buttonPriceToDelete.Size = new Size(94, 29);
+            buttonPriceToDelete.TabIndex = 11;
+            buttonPriceToDelete.Text = "Slet Prissæt";
+            buttonPriceToDelete.UseVisualStyleBackColor = true;
+            buttonPriceToDelete.Click += buttonPriceToDelete_Click;
+            // 
             // textBoxPriceToDelete
             // 
             textBoxPriceToDelete.Location = new Point(84, 64);
@@ -248,16 +238,6 @@
             label4.Size = new Size(280, 20);
             label4.TabIndex = 9;
             label4.Text = "Skriv ID'et på det prissæt som skal slettes";
-            // 
-            // buttonPriceToDelete
-            // 
-            buttonPriceToDelete.Location = new Point(105, 109);
-            buttonPriceToDelete.Name = "buttonPriceToDelete";
-            buttonPriceToDelete.Size = new Size(94, 29);
-            buttonPriceToDelete.TabIndex = 11;
-            buttonPriceToDelete.Text = "Slet Prissæt";
-            buttonPriceToDelete.UseVisualStyleBackColor = true;
-            buttonPriceToDelete.Click += buttonPriceToDelete_Click;
             // 
             // PriceMenu
             // 
@@ -290,10 +270,8 @@
         private Button buttonCreatePriceMenu;
         private GroupBox groupBox2;
         private TextBox textBoxWeekday;
-        private TextBox textBoxSpecialPrice;
         private TextBox textBoxNormalPrice;
         private Label labelWeekday;
-        private Label label2;
         private Label label1;
         private Button buttonSavePrice;
         private TextBox textBoxPriceId;
