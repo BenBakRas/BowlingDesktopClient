@@ -11,7 +11,7 @@ namespace BowlingDesktopClient.ServiceLayer
     public class CustomerServiceAccess : ICustomerAccess
     {
         readonly IServiceConnection _customerService;
-        readonly String _serviceBaseUrl = "https://localhost:7197/api/customers/";
+        readonly String _serviceBaseUrl = "https://localhost:7197/api/customers";
         static readonly string authenType = "Bearer";
         public HttpStatusCode CurrentHttpStatusCode { get; set; }
         public CustomerServiceAccess()
@@ -66,16 +66,12 @@ namespace BowlingDesktopClient.ServiceLayer
             return customersFromService;
             
         }
-        public async Task<int> SaveCustomer(string tokenToUse, Customer customerToSave)
+        public async Task<int> SaveCustomer(Customer customerToSave)
         {
             int insertedCustomerId = -1;
             //
             _customerService.UseUrl = _customerService.BaseUrl;
-            // Must add Bearer token to request header
-            string bearerTokenValue = authenType + " " + tokenToUse;
-            _customerService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
-            _customerService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
-
+           
             try
             {
                 var json = JsonConvert.SerializeObject(customerToSave);
@@ -102,12 +98,15 @@ namespace BowlingDesktopClient.ServiceLayer
             }
             return insertedCustomerId;
         }
-        public async Task<bool> DeleteCustomer(int customerId)
+        public async Task<bool> DeleteCustomer(string tokenToUse, int customerId)
         {
             bool isDeleted = false;
 
             _customerService.UseUrl = $"{_customerService.BaseUrl}/{customerId}";
-
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _customerService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _customerService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
             try
             {
                 var serviceResponse = await _customerService.CallServiceDelete();
@@ -123,12 +122,15 @@ namespace BowlingDesktopClient.ServiceLayer
 
             return isDeleted;
         }
-        public async Task<bool> UpdateCustomer(int customerId, Customer customerToUpdate)
+        public async Task<bool> UpdateCustomer(string tokenToUse, int customerId, Customer customerToUpdate)
         {
             bool isUpdated = false;
 
             _customerService.UseUrl = $"{_customerService.BaseUrl}/{customerId}";
-
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _customerService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _customerService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
             try
             {
                 var json = JsonConvert.SerializeObject(customerToUpdate);

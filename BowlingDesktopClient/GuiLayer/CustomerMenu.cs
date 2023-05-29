@@ -71,7 +71,7 @@ namespace BowlingDesktopClient.GuiLayer
             listBoxCustomers.DataSource = fetchedCustomer;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             _ccMenu.ShowDialog();
         }
@@ -157,7 +157,7 @@ namespace BowlingDesktopClient.GuiLayer
 
         }
 
-        private async void buttonDeleteCustomer_Click(object sender, EventArgs e)
+        private async void buttonDeleteCustomer_Click_1(object sender, EventArgs e)
         {
             string customerId = textBoxDeleteCustomer.Text;
 
@@ -182,6 +182,7 @@ namespace BowlingDesktopClient.GuiLayer
             }
 
         }
+
     }
 
 }

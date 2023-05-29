@@ -51,39 +51,52 @@ namespace BowlingDesktopClient.ControlLayer
 
         }
 
-        /*public async Task<List<Customer>?> GetAllCustomers()
-        {
-            List<Customer>? foundCustomers = null;
-            if (_cAccess != null)
-            {
-                foundCustomers = await _cAccess.GetCustomers();
-            }
-
-            return foundCustomers;
-        }*/
-
         public async Task<int> SaveCustomer(string fName, string lName, string email, string mPhone)
         {
             Customer newCustomer = new(fName, lName, email, mPhone);
-            int insertedId = await _cAccess.SaveCustomer(null, newCustomer);
+            int insertedId = await _cAccess.SaveCustomer(newCustomer);
             return insertedId;
         }
+        //Method to delete a customer
         public async Task<bool> DeleteCustomer(int customerId)
         {
-            if (_cAccess != null)
+            bool isDeleted = false;
+            TokenState currentState = TokenState.Valid;        // Presumed state
+            string? tokenValue = await GetToken(currentState);
+
+            if (tokenValue != null)
             {
-                return await _cAccess.DeleteCustomer(customerId);
+                _cAccess.DeleteCustomer(tokenValue, customerId);
+                if (_cAccess.CurrentHttpStatusCode==HttpStatusCode.Unauthorized)
+                {
+                    currentState = TokenState.Invalid;
+                }
+                return isDeleted;
             }
-            return false;
+            else
+            {
+                currentState= TokenState.Invalid;
+            }
+            if(currentState == TokenState.Invalid)
+            {
+                tokenValue = await GetToken(currentState);
+                if(tokenValue != null)
+                {
+                    _cAccess.DeleteCustomer(tokenValue, customerId);
+                    isDeleted = true;
+                }
+            }
+            return isDeleted;
         }
 
         public async Task<bool> UpdateCustomer(int id, Customer customerToUpdate)
         {
             bool isUpdated = false;
-
+            TokenState currentState = TokenState.Valid;        // Presumed state
+            string? tokenValue = await GetToken(currentState);
             if (_cAccess != null)
             {
-                isUpdated = await _cAccess.UpdateCustomer(id, customerToUpdate);
+                isUpdated = await _cAccess.UpdateCustomer(tokenValue, id, customerToUpdate);
             }
 
             return isUpdated;

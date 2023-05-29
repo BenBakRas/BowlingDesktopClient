@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,15 +16,21 @@ namespace BowlingDesktopClient.ServiceLayer
         readonly IServiceConnection _customerService;
         readonly String _serviceBaseUrl = "https://localhost:7197/api/bookings";
         readonly string _otherServiceBaseUrl = "https://localhost:7197/api/customers";
+        static readonly string authenType = "Bearer";
+        public HttpStatusCode CurrentHttpStatusCode { get; set; }
         public BookingServiceAccess()
         {
             _bookingService = new ServiceConnection(_serviceBaseUrl);
             _customerService = new ServiceConnection(_otherServiceBaseUrl);
         }
 
-        public async Task<List<Booking>?>? GetBookings(int id = -1)
+        public async Task<List<Booking>?>? GetBookings(string tokenToUse, int id = -1)
         {
             List<Booking>? bookingsFromService = null;
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _bookingService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _bookingService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
 
             _bookingService.UseUrl = _bookingService.BaseUrl;
             bool hasValidId = (id > 0);
@@ -72,10 +79,14 @@ namespace BowlingDesktopClient.ServiceLayer
             }
             return bookingsFromService;
         }
-        public async Task<int> SaveBooking(Booking bookingToSave)
+        public async Task<int> SaveBooking(string tokenToUse, Booking bookingToSave)
         {
             int insertedBookingId = -1;
 
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _bookingService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _bookingService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
             try
             {
                 if (bookingToSave.Customer != null)
@@ -111,14 +122,17 @@ namespace BowlingDesktopClient.ServiceLayer
             return insertedBookingId;
         }
 
-        public async Task<List<Booking>?> FindBookingsByCustomerPhone(string phone)
+        public async Task<List<Booking>?> FindBookingsByCustomerPhone(string tokenToUse, string phone)
         {
             List<Booking>? bookings = null;
-
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _bookingService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _bookingService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
             try
             {
                 // First, find the customer by phone number
-                Customer? customer = await FindCustomerByPhone(phone);
+                Customer? customer = await FindCustomerByPhone(null, phone);
 
                 if (customer != null)
                 {
@@ -142,10 +156,13 @@ namespace BowlingDesktopClient.ServiceLayer
 
             return bookings;
         }
-        public async Task<Customer?> FindCustomerByPhone(string phone)
+        public async Task<Customer?> FindCustomerByPhone(string tokenToUse, string phone)
         {
             _customerService.UseUrl = $"{_customerService.BaseUrl}/{phone}";
-
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _bookingService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _bookingService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
             try
             {
                 var serviceResponse = await _customerService.CallServiceGet();
@@ -173,11 +190,15 @@ namespace BowlingDesktopClient.ServiceLayer
 
             return null; // Return null if the customer is not found or if there was an error
         }
-            public async Task<Booking?> FindBookingById(int id)
+
+        public async Task<Booking?> FindBookingById(string tokenToUse, int id)
         {
             Booking? foundBooking = null;
             _bookingService.UseUrl = $"{_bookingService.BaseUrl}/{id}";
-
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _bookingService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _bookingService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
             try
             {
                 var serviceResponse = await _bookingService.CallServiceGet();
@@ -195,12 +216,15 @@ namespace BowlingDesktopClient.ServiceLayer
             return foundBooking;
         }
 
-        public async Task<bool> DeleteBooking(int bookingId)
+        public async Task<bool> DeleteBooking(string tokenToUse, int bookingId)
         {
             bool isDeleted = false;
 
                 _bookingService.UseUrl = $"{_bookingService.BaseUrl}/{bookingId}";
-
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _bookingService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _bookingService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
 
             try
             {

@@ -46,7 +46,7 @@ namespace BowlingDesktopClient.GuiLayer
             listBoxLanes.DataSource = fethcedLanes;
         }
 
-        private async void buttonGetAllLanes_Click(object sender, EventArgs e)
+        private async void buttonGetAllLanes_Click_1(object sender, EventArgs e)
         {
             string processText = "Good or Not";
             List<Lane>? fethcedLanes = await _laneControl.GetAllLanes();
@@ -104,7 +104,7 @@ namespace BowlingDesktopClient.GuiLayer
 
         }
 
-        private async void buttonUpdateLane_Click(object sender, EventArgs e)
+        private async void buttonUpdateLane_Click_1(object sender, EventArgs e)
         {
             int laneId = int.Parse(textBoxFindByID.Text);
 
@@ -122,7 +122,7 @@ namespace BowlingDesktopClient.GuiLayer
                 if (isUpdated)
                 {
                     // Lane was successfully updated
-                    MessageBox.Show("Lane updated successfully.");
+                    MessageBox.Show("Bane opdateret.");
                     List<Lane> fetchedLane = new List<Lane> { };
                     laneToUpdate.Id = laneId;
                     fetchedLane.Add(laneToUpdate);
@@ -131,13 +131,13 @@ namespace BowlingDesktopClient.GuiLayer
                 else
                 {
                     // Failed to update lane
-                    MessageBox.Show("Failed to update lane.");
+                    MessageBox.Show("Fejl ved opdatering.");
                 }
             }
             else
             {
                 // Lane with the specified ID was not found
-                MessageBox.Show("Lane not found.");
+                MessageBox.Show("Bane ikke fundet.");
             }
         }
 
@@ -164,7 +164,6 @@ namespace BowlingDesktopClient.GuiLayer
         {
             _clMenu.ShowDialog();
         }
-
 
     }
 }

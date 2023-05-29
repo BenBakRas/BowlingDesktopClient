@@ -1,9 +1,11 @@
 ﻿using BowlingDesktopClient.Models;
+using BowlingDesktopClient.Security;
 using BowlingDesktopClient.ServiceLayer.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,12 +15,14 @@ namespace BowlingDesktopClient.ServiceLayer
     {
         readonly IServiceConnection _LaneService;
         readonly String _serviceBaseUrl = "https://localhost:7197/api/lanes";
+        static readonly string authenType = "Bearer";
+        public HttpStatusCode CurrentHttpStatusCode { get; set; }
         public LaneServiceAccess()
         {
             _LaneService = new ServiceConnection(_serviceBaseUrl);
         }
 
-        public async Task<List<Lane>?>? GetLanes(int id = -1)
+        public async Task<List<Lane>?>? GetLanes(string tokenToUse, int id = -1)
         {
             List<Lane>? lanesFromService = null;
 
@@ -28,13 +32,18 @@ namespace BowlingDesktopClient.ServiceLayer
             {
                 _LaneService.UseUrl += id.ToString();
             }
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _LaneService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _LaneService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
             if (_LaneService != null)
             {
                 try
                 {
                     var serviceResponse = await _LaneService.CallServiceGet();
-                    bool wasResponse = (serviceResponse != null);
-                    if (wasResponse && serviceResponse.IsSuccessStatusCode)
+                    CurrentHttpStatusCode = serviceResponse != null ? serviceResponse.StatusCode : HttpStatusCode.BadRequest;
+
+                    if (serviceResponse != null && serviceResponse.IsSuccessStatusCode)
                     {
                         var content = await serviceResponse.Content.ReadAsStringAsync();
                         if (hasValidId)
@@ -52,7 +61,7 @@ namespace BowlingDesktopClient.ServiceLayer
                     }
                     else
                     {
-                        if (wasResponse && serviceResponse.StatusCode == System.Net.HttpStatusCode.NoContent)
+                        if(serviceResponse != null && serviceResponse.StatusCode == HttpStatusCode.NoContent)
                         {
                             lanesFromService = new List<Lane>();
                         }
@@ -60,6 +69,7 @@ namespace BowlingDesktopClient.ServiceLayer
                         {
                             lanesFromService = null;
                         }
+                       
                     }
                 }
                 catch
@@ -69,11 +79,16 @@ namespace BowlingDesktopClient.ServiceLayer
             }
             return lanesFromService;
         }
-        public async Task<int> SaveLane(Lane laneToSave)
+        public async Task<int> SaveLane(string tokenToUse, Lane laneToSave)
         {
             int insertedLaneId = -1;
-            //
+            
             _LaneService.UseUrl = _LaneService.BaseUrl;
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _LaneService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _LaneService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
+
             try
             {
                 var json = JsonConvert.SerializeObject(laneToSave);
@@ -100,11 +115,14 @@ namespace BowlingDesktopClient.ServiceLayer
             }
             return insertedLaneId;
         }
-        public async Task<Lane?> FindLaneById(int laneId)
+        public async Task<Lane?> FindLaneById(string tokenToUse, int laneId)
         {
             Lane? foundLane = null;
             _LaneService.UseUrl = $"{_LaneService.BaseUrl}/{laneId}";
-
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _LaneService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _LaneService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
             try
             {
                 var serviceResponse = await _LaneService.CallServiceGet();
@@ -121,12 +139,15 @@ namespace BowlingDesktopClient.ServiceLayer
 
             return foundLane;
         }
-        public async Task<bool> UpdateLane(int id, Lane laneToUpdate) 
+        public async Task<bool> UpdateLane(string tokenToUse, int id, Lane laneToUpdate) 
         {
             bool isUpdated = false;
 
             _LaneService.UseUrl = $"{_LaneService.BaseUrl}/{id}";
-
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _LaneService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _LaneService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
             try
             {
                 var json = JsonConvert.SerializeObject(laneToUpdate);
@@ -146,12 +167,15 @@ namespace BowlingDesktopClient.ServiceLayer
             return isUpdated;
         }
 
-        public async Task<bool> DeleteLane(int laneId)
+        public async Task<bool> DeleteLane(string tokenToUse, int laneId)
         {
             bool isDeleted = false;
 
             _LaneService.UseUrl = $"{_LaneService.BaseUrl}/{laneId}";
-
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _LaneService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _LaneService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
             try
             {
                 var serviceResponse = await _LaneService.CallServiceDelete();

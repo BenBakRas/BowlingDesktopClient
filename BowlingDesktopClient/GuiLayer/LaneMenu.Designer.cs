@@ -84,6 +84,7 @@
             buttonGetAllLanes.TabIndex = 3;
             buttonGetAllLanes.Text = "Find alle";
             buttonGetAllLanes.UseVisualStyleBackColor = true;
+            buttonGetAllLanes.Click += buttonGetAllLanes_Click_1;
             // 
             // buttonGetLane
             // 
@@ -138,6 +139,7 @@
             buttonUpdateLane.TabIndex = 4;
             buttonUpdateLane.Text = "Opdater Lane";
             buttonUpdateLane.UseVisualStyleBackColor = true;
+            buttonUpdateLane.Click += buttonUpdateLane_Click_1;
             // 
             // textBoxNewLaneNumber
             // 

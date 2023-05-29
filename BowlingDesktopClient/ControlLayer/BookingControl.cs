@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BowlingDesktopClient.Security;
+using System.Net;
 
 namespace BowlingDesktopClient.ControlLayer
 {
@@ -22,54 +24,113 @@ namespace BowlingDesktopClient.ControlLayer
         public async Task<List<Booking>?> GetAllBookings()
         {
             List<Booking>? foundBookings = null;
-            if (_bAccess != null)
-            {
-                foundBookings = await _bAccess.GetBookings();
 
-                foreach (Booking booking in foundBookings)
+            // Get token
+            TokenState currentState = TokenState.Valid;        // Presumed state
+            string? tokenValue = await GetToken(currentState);
+
+            if(tokenValue != null)
+            {
+                foundBookings = await _bAccess.GetBookings(tokenValue);
+                if(_bAccess.CurrentHttpStatusCode == HttpStatusCode.Unauthorized)
                 {
-                    Booking? foundByBookingId = await _bAccess.FindBookingById(booking.Id); // Find booking using booking ID
+                    currentState = TokenState.Invalid;
+                }
+            }
+            else
+            {
+                currentState = TokenState.Invalid;
+            }
+            if (currentState == TokenState.Invalid)
+            {
+                tokenValue = await GetToken(currentState);
+                if (tokenValue != null)
+                {
+                    foundBookings = await _bAccess.GetBookings(tokenValue);
+                }
+            }
+            foreach (Booking booking in foundBookings)
+                {
+                    Booking? foundByBookingId = await _bAccess.FindBookingById(tokenValue, booking.Id); // Find booking using booking ID
 
                     if (foundByBookingId != null)
                     {
                         booking.PriceId = foundByBookingId.PriceId; 
                         booking.LaneId = foundByBookingId.LaneId; 
                     }
-                }
-            }
+               }
+            
             return foundBookings;
         }
 
         public async Task<int> SaveBooking(DateTime StartDateTime, int hoursToPlay, int noOfPlayers, Customer customer)
         {
-
-            if (customer == null)
+            int insertedId = -1;
+            Booking newBooking = new Booking(StartDateTime, hoursToPlay, noOfPlayers, customer);
+            // Get token
+            TokenState currentState = TokenState.Valid;        // Presumed state
+            string? tokenValue = await GetToken(currentState);
+            if (tokenValue != null)
             {
-                // Customer not found, handle the scenario as needed
-                return -1;
+                insertedId = await _bAccess.SaveBooking(tokenValue, newBooking);
+                if (_bAccess.CurrentHttpStatusCode == HttpStatusCode.Unauthorized)
+                {
+                    currentState = TokenState.Invalid;
+                }
+                return insertedId;
+            }
+            else
+            {
+                currentState = TokenState.Invalid;
+            }
+            if (currentState == TokenState.Invalid)
+            {
+                tokenValue = await GetToken(currentState);
+                if (tokenValue != null)
+                {
+                    insertedId = await _bAccess.SaveBooking(tokenValue, newBooking);
+                }
             }
 
-            Booking newBooking = new Booking(StartDateTime, hoursToPlay, noOfPlayers, customer);
-            int insertedId = await _bAccess.SaveBooking(newBooking);
             return insertedId;
         }
         public async Task<List<Booking>?> FindBookingByCustomerPhone(string customerPNO)
         {
             List<Booking>? foundBookings = null;
+            // Get token
+            TokenState currentState = TokenState.Valid;        // Presumed state
+            string? tokenValue = await GetToken(currentState);
 
-            if (_bAccess != null)
+            if (tokenValue != null)
             {
-                foundBookings = await _bAccess.FindBookingsByCustomerPhone(customerPNO);
-
-                foreach (Booking booking in foundBookings)
+                foundBookings = await _bAccess.FindBookingsByCustomerPhone(tokenValue, customerPNO);
+                if (_bAccess.CurrentHttpStatusCode == HttpStatusCode.Unauthorized)
                 {
-                    Booking foundByBookingId = await _bAccess.FindBookingById(booking.Id); // Find booking using booking ID
+                    currentState = TokenState.Invalid;
+                }
+            }
+            else
+            {
+                currentState = TokenState.Invalid;
+            }
+            if (currentState == TokenState.Invalid)
+            {
+                tokenValue = await GetToken(currentState);
+                if (tokenValue != null)
+                {
+                    foundBookings = await _bAccess.FindBookingsByCustomerPhone(tokenValue, customerPNO);
+                }
+            }
+            foundBookings = await _bAccess.FindBookingsByCustomerPhone(tokenValue, customerPNO);
 
-                    if (foundByBookingId != null)
-                    {
-                        booking.PriceId = foundByBookingId.PriceId; // Update priceId
-                        booking.LaneId = foundByBookingId.LaneId; // Update laneId
-                    }
+            foreach (Booking booking in foundBookings)
+            {
+                Booking foundByBookingId = await _bAccess.FindBookingById(tokenValue, booking.Id); // Find booking using booking ID
+
+                if (foundByBookingId != null)
+                {
+                    booking.PriceId = foundByBookingId.PriceId; // Update priceId
+                    booking.LaneId = foundByBookingId.LaneId; // Update laneId
                 }
             }
 
@@ -79,24 +140,66 @@ namespace BowlingDesktopClient.ControlLayer
         public async Task<Booking?> FindBookingById(int bookingId)
         {
             Booking? foundBooking = null;
-
-            if (_bAccess != null)
+            // Get token
+            TokenState currentState = TokenState.Valid;        // Presumed state
+            string? tokenValue = await GetToken(currentState);
+            if (tokenValue != null)
             {
-                foundBooking = await _bAccess.FindBookingById(bookingId);
+                foundBooking = await _bAccess.FindBookingById(tokenValue, bookingId);
+                if (_bAccess.CurrentHttpStatusCode == HttpStatusCode.Unauthorized)
+                {
+                    currentState = TokenState.Invalid;
+                }
             }
-
+            else
+            {
+                currentState = TokenState.Invalid;
+            }
+            if (currentState == TokenState.Invalid)
+            {
+                tokenValue = await GetToken(currentState);
+                if (tokenValue != null)
+                {
+                    foundBooking = await _bAccess.FindBookingById(tokenValue, bookingId);
+                }
+            }
+           
             return foundBooking;
         }
         public async Task<bool> DeleteBooking(int bookingId)
         {
             bool isDeleted = false;
-
-            if (_bAccess != null)
+            // Get token
+            TokenState currentState = TokenState.Valid;        // Presumed state
+            string? tokenValue = await GetToken(currentState);
+            if (tokenValue != null)
             {
-                isDeleted = await _bAccess.DeleteBooking(bookingId);
+                isDeleted = await _bAccess.DeleteBooking(tokenValue, bookingId);
+                if (_bAccess.CurrentHttpStatusCode == HttpStatusCode.Unauthorized)
+                {
+                    currentState = TokenState.Invalid;
+                }
+            }
+            else
+            {
+                currentState = TokenState.Invalid;
+            }
+            if (currentState == TokenState.Invalid)
+            {
+                tokenValue = await GetToken(currentState);
+                if (tokenValue != null)
+                {
+                    isDeleted = await _bAccess.DeleteBooking(tokenValue, bookingId);
+                }
             }
 
             return isDeleted;
+        }
+        private async Task<string?> GetToken(TokenState useState)
+        {
+            TokenManager tokenHelp = new TokenManager();
+            string? foundToken = await tokenHelp.GetToken(useState);
+            return foundToken;
         }
     }
 }
