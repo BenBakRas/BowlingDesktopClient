@@ -28,298 +28,297 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            button1 = new Button();
-            textBoxFindBy = new TextBox();
-            button2 = new Button();
-            buttonGetCustomers = new Button();
-            listBoxCustomers = new ListBox();
-            labelCustomerText = new Label();
-            groupBox2 = new GroupBox();
-            textBoxFindIdByPhone = new TextBox();
-            label7 = new Label();
-            label6 = new Label();
-            label5 = new Label();
-            buttonUpdateCustomer = new Button();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            textBoxPhone = new TextBox();
-            textBoxEmail = new TextBox();
-            textBoxLastName = new TextBox();
-            textBoxFirstName = new TextBox();
-            groupBox3 = new GroupBox();
-            buttonDeleteCustomer = new Button();
-            textBoxDeleteCustomer = new TextBox();
-            label8 = new Label();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
-            groupBox3.SuspendLayout();
-            SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxFindBy = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.buttonGetCustomers = new System.Windows.Forms.Button();
+            this.listBoxCustomers = new System.Windows.Forms.ListBox();
+            this.labelCustomerText = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBoxFindIdByPhone = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buttonUpdateCustomer = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxPhone = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.textBoxLastName = new System.Windows.Forms.TextBox();
+            this.textBoxFirstName = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.buttonDeleteCustomer = new System.Windows.Forms.Button();
+            this.textBoxDeleteCustomer = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(textBoxFindBy);
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(buttonGetCustomers);
-            groupBox1.Controls.Add(listBoxCustomers);
-            groupBox1.Location = new Point(23, 29);
-            groupBox1.Margin = new Padding(3, 4, 3, 4);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(618, 537);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Find Kunder";
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.textBoxFindBy);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.buttonGetCustomers);
+            this.groupBox1.Controls.Add(this.listBoxCustomers);
+            this.groupBox1.Location = new System.Drawing.Point(23, 29);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(618, 537);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Find Kunder";
             // 
             // button1
             // 
-            button1.Location = new Point(465, 47);
-            button1.Name = "button1";
-            button1.Size = new Size(111, 29);
-            button1.TabIndex = 4;
-            button1.Text = "Opret Kunde";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click_1;
+            this.button1.Location = new System.Drawing.Point(465, 47);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 29);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Opret Kunde";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // textBoxFindBy
             // 
-            textBoxFindBy.Location = new Point(7, 45);
-            textBoxFindBy.Margin = new Padding(3, 4, 3, 4);
-            textBoxFindBy.Name = "textBoxFindBy";
-            textBoxFindBy.Size = new Size(218, 27);
-            textBoxFindBy.TabIndex = 3;
+            this.textBoxFindBy.Location = new System.Drawing.Point(7, 45);
+            this.textBoxFindBy.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxFindBy.Name = "textBoxFindBy";
+            this.textBoxFindBy.Size = new System.Drawing.Size(218, 27);
+            this.textBoxFindBy.TabIndex = 3;
             // 
             // button2
             // 
-            button2.Location = new Point(232, 45);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(86, 31);
-            button2.TabIndex = 2;
-            button2.Text = "Søg";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += buttonGetCusByPhone;
+            this.button2.Location = new System.Drawing.Point(232, 45);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(86, 31);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Søg";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // buttonGetCustomers
             // 
-            buttonGetCustomers.Location = new Point(324, 45);
-            buttonGetCustomers.Margin = new Padding(3, 4, 3, 4);
-            buttonGetCustomers.Name = "buttonGetCustomers";
-            buttonGetCustomers.Size = new Size(102, 31);
-            buttonGetCustomers.TabIndex = 1;
-            buttonGetCustomers.Text = "Find alle";
-            buttonGetCustomers.UseVisualStyleBackColor = true;
-            buttonGetCustomers.Click += buttonGetCustomers_Click;
+            this.buttonGetCustomers.Location = new System.Drawing.Point(324, 45);
+            this.buttonGetCustomers.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonGetCustomers.Name = "buttonGetCustomers";
+            this.buttonGetCustomers.Size = new System.Drawing.Size(102, 31);
+            this.buttonGetCustomers.TabIndex = 1;
+            this.buttonGetCustomers.Text = "Find alle";
+            this.buttonGetCustomers.UseVisualStyleBackColor = true;
+            this.buttonGetCustomers.Click += new System.EventHandler(this.buttonGetCustomers_Click_1);
             // 
             // listBoxCustomers
             // 
-            listBoxCustomers.FormattingEnabled = true;
-            listBoxCustomers.ItemHeight = 20;
-            listBoxCustomers.Location = new Point(0, 205);
-            listBoxCustomers.Margin = new Padding(3, 4, 3, 4);
-            listBoxCustomers.Name = "listBoxCustomers";
-            listBoxCustomers.Size = new Size(612, 324);
-            listBoxCustomers.TabIndex = 0;
+            this.listBoxCustomers.FormattingEnabled = true;
+            this.listBoxCustomers.ItemHeight = 20;
+            this.listBoxCustomers.Location = new System.Drawing.Point(0, 205);
+            this.listBoxCustomers.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listBoxCustomers.Name = "listBoxCustomers";
+            this.listBoxCustomers.Size = new System.Drawing.Size(612, 324);
+            this.listBoxCustomers.TabIndex = 0;
             // 
             // labelCustomerText
             // 
-            labelCustomerText.AutoSize = true;
-            labelCustomerText.Location = new Point(30, 571);
-            labelCustomerText.Name = "labelCustomerText";
-            labelCustomerText.Size = new Size(93, 20);
-            labelCustomerText.TabIndex = 1;
-            labelCustomerText.Text = "Good or Not";
+            this.labelCustomerText.AutoSize = true;
+            this.labelCustomerText.Location = new System.Drawing.Point(30, 571);
+            this.labelCustomerText.Name = "labelCustomerText";
+            this.labelCustomerText.Size = new System.Drawing.Size(93, 20);
+            this.labelCustomerText.TabIndex = 1;
+            this.labelCustomerText.Text = "Good or Not";
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(textBoxFindIdByPhone);
-            groupBox2.Controls.Add(label7);
-            groupBox2.Controls.Add(label6);
-            groupBox2.Controls.Add(label5);
-            groupBox2.Controls.Add(buttonUpdateCustomer);
-            groupBox2.Controls.Add(label4);
-            groupBox2.Controls.Add(label3);
-            groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(label1);
-            groupBox2.Controls.Add(textBoxPhone);
-            groupBox2.Controls.Add(textBoxEmail);
-            groupBox2.Controls.Add(textBoxLastName);
-            groupBox2.Controls.Add(textBoxFirstName);
-            groupBox2.Location = new Point(647, 41);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(259, 424);
-            groupBox2.TabIndex = 4;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Opdater Kunde infomation";
+            this.groupBox2.Controls.Add(this.textBoxFindIdByPhone);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.buttonUpdateCustomer);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.textBoxPhone);
+            this.groupBox2.Controls.Add(this.textBoxEmail);
+            this.groupBox2.Controls.Add(this.textBoxLastName);
+            this.groupBox2.Controls.Add(this.textBoxFirstName);
+            this.groupBox2.Location = new System.Drawing.Point(647, 41);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(259, 424);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Opdater Kunde infomation";
             // 
             // textBoxFindIdByPhone
             // 
-            textBoxFindIdByPhone.Location = new Point(74, 76);
-            textBoxFindIdByPhone.Name = "textBoxFindIdByPhone";
-            textBoxFindIdByPhone.Size = new Size(94, 27);
-            textBoxFindIdByPhone.TabIndex = 13;
+            this.textBoxFindIdByPhone.Location = new System.Drawing.Point(74, 76);
+            this.textBoxFindIdByPhone.Name = "textBoxFindIdByPhone";
+            this.textBoxFindIdByPhone.Size = new System.Drawing.Size(94, 27);
+            this.textBoxFindIdByPhone.TabIndex = 13;
             // 
             // label7
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(15, 44);
-            label7.Name = "label7";
-            label7.Size = new Size(238, 20);
-            label7.TabIndex = 11;
-            label7.Text = "Indtast telefonnummeret på kunde";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(15, 44);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(238, 20);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Indtast telefonnummeret på kunde";
             // 
             // label6
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(70, 143);
-            label6.Name = "label6";
-            label6.Size = new Size(112, 20);
-            label6.TabIndex = 10;
-            label6.Text = "der skal ændres";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(70, 143);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(112, 20);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "der skal ændres";
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(35, 123);
-            label5.Name = "label5";
-            label5.Size = new Size(196, 20);
-            label5.TabIndex = 9;
-            label5.Text = "Indtast kun de infomationer ";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(35, 123);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(196, 20);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Indtast kun de infomationer ";
             // 
             // buttonUpdateCustomer
             // 
-            buttonUpdateCustomer.Location = new Point(66, 389);
-            buttonUpdateCustomer.Name = "buttonUpdateCustomer";
-            buttonUpdateCustomer.Size = new Size(125, 29);
-            buttonUpdateCustomer.TabIndex = 8;
-            buttonUpdateCustomer.Text = "Updater Kunde";
-            buttonUpdateCustomer.UseVisualStyleBackColor = true;
+            this.buttonUpdateCustomer.Location = new System.Drawing.Point(66, 389);
+            this.buttonUpdateCustomer.Name = "buttonUpdateCustomer";
+            this.buttonUpdateCustomer.Size = new System.Drawing.Size(125, 29);
+            this.buttonUpdateCustomer.TabIndex = 8;
+            this.buttonUpdateCustomer.Text = "Updater Kunde";
+            this.buttonUpdateCustomer.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(93, 333);
-            label4.Name = "label4";
-            label4.Size = new Size(75, 20);
-            label4.TabIndex = 7;
-            label4.Text = "Mobil No.";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(93, 333);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 20);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Mobil No.";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(107, 280);
-            label3.Name = "label3";
-            label3.Size = new Size(46, 20);
-            label3.TabIndex = 6;
-            label3.Text = "Email";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(107, 280);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 20);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Email";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(97, 227);
-            label2.Name = "label2";
-            label2.Size = new Size(71, 20);
-            label2.TabIndex = 5;
-            label2.Text = "Efternavn";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(97, 227);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Efternavn";
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(97, 174);
-            label1.Name = "label1";
-            label1.Size = new Size(61, 20);
-            label1.TabIndex = 4;
-            label1.Text = "Fornavn";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(97, 174);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 20);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Fornavn";
             // 
             // textBoxPhone
             // 
-            textBoxPhone.Location = new Point(66, 356);
-            textBoxPhone.Name = "textBoxPhone";
-            textBoxPhone.Size = new Size(125, 27);
-            textBoxPhone.TabIndex = 3;
+            this.textBoxPhone.Location = new System.Drawing.Point(66, 356);
+            this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.Size = new System.Drawing.Size(125, 27);
+            this.textBoxPhone.TabIndex = 3;
             // 
             // textBoxEmail
             // 
-            textBoxEmail.Location = new Point(66, 303);
-            textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(125, 27);
-            textBoxEmail.TabIndex = 2;
+            this.textBoxEmail.Location = new System.Drawing.Point(66, 303);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(125, 27);
+            this.textBoxEmail.TabIndex = 2;
             // 
             // textBoxLastName
             // 
-            textBoxLastName.Location = new Point(66, 250);
-            textBoxLastName.Name = "textBoxLastName";
-            textBoxLastName.Size = new Size(125, 27);
-            textBoxLastName.TabIndex = 1;
+            this.textBoxLastName.Location = new System.Drawing.Point(66, 250);
+            this.textBoxLastName.Name = "textBoxLastName";
+            this.textBoxLastName.Size = new System.Drawing.Size(125, 27);
+            this.textBoxLastName.TabIndex = 1;
             // 
             // textBoxFirstName
             // 
-            textBoxFirstName.ForeColor = SystemColors.WindowText;
-            textBoxFirstName.Location = new Point(66, 197);
-            textBoxFirstName.Name = "textBoxFirstName";
-            textBoxFirstName.Size = new Size(125, 27);
-            textBoxFirstName.TabIndex = 0;
+            this.textBoxFirstName.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textBoxFirstName.Location = new System.Drawing.Point(66, 197);
+            this.textBoxFirstName.Name = "textBoxFirstName";
+            this.textBoxFirstName.Size = new System.Drawing.Size(125, 27);
+            this.textBoxFirstName.TabIndex = 0;
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(buttonDeleteCustomer);
-            groupBox3.Controls.Add(textBoxDeleteCustomer);
-            groupBox3.Controls.Add(label8);
-            groupBox3.Location = new Point(647, 471);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(259, 125);
-            groupBox3.TabIndex = 5;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Slet Customer";
+            this.groupBox3.Controls.Add(this.buttonDeleteCustomer);
+            this.groupBox3.Controls.Add(this.textBoxDeleteCustomer);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Location = new System.Drawing.Point(647, 471);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(259, 125);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Slet Customer";
             // 
             // buttonDeleteCustomer
             // 
-            buttonDeleteCustomer.Location = new Point(88, 79);
-            buttonDeleteCustomer.Name = "buttonDeleteCustomer";
-            buttonDeleteCustomer.Size = new Size(94, 29);
-            buttonDeleteCustomer.TabIndex = 2;
-            buttonDeleteCustomer.Text = "Slet Kunde";
-            buttonDeleteCustomer.UseVisualStyleBackColor = true;
+            this.buttonDeleteCustomer.Location = new System.Drawing.Point(88, 79);
+            this.buttonDeleteCustomer.Name = "buttonDeleteCustomer";
+            this.buttonDeleteCustomer.Size = new System.Drawing.Size(94, 29);
+            this.buttonDeleteCustomer.TabIndex = 2;
+            this.buttonDeleteCustomer.Text = "Slet Kunde";
+            this.buttonDeleteCustomer.UseVisualStyleBackColor = true;
             // 
             // textBoxDeleteCustomer
             // 
-            textBoxDeleteCustomer.Location = new Point(70, 46);
-            textBoxDeleteCustomer.Name = "textBoxDeleteCustomer";
-            textBoxDeleteCustomer.Size = new Size(125, 27);
-            textBoxDeleteCustomer.TabIndex = 1;
+            this.textBoxDeleteCustomer.Location = new System.Drawing.Point(70, 46);
+            this.textBoxDeleteCustomer.Name = "textBoxDeleteCustomer";
+            this.textBoxDeleteCustomer.Size = new System.Drawing.Size(125, 27);
+            this.textBoxDeleteCustomer.TabIndex = 1;
             // 
             // label8
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(6, 23);
-            label8.Name = "label8";
-            label8.Size = new Size(247, 20);
-            label8.TabIndex = 0;
-            label8.Text = "Indtast ID på kunden der skal slettes";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 23);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(247, 20);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Indtast ID på kunden der skal slettes";
             // 
             // CustomerMenu
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
-            Controls.Add(groupBox3);
-            Controls.Add(groupBox2);
-            Controls.Add(labelCustomerText);
-            Controls.Add(groupBox1);
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "CustomerMenu";
-            Text = "CustomerMenu";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(914, 600);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.labelCustomerText);
+            this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Name = "CustomerMenu";
+            this.Text = "CustomerMenu";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

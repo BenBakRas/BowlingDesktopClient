@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using BowlingDesktopClient.Security;
+using System.Net;
 
 namespace BowlingDesktopClient.ControlLayer
 {
@@ -22,17 +24,48 @@ namespace BowlingDesktopClient.ControlLayer
         public async Task<List<Customer>?> GetAllCustomers()
         {
             List<Customer>? foundCustomers = null;
+            // Get token
+            TokenState currentState = TokenState.Valid;        // Presumed state
+            string? tokenValue = await GetToken(currentState);
+            if (tokenValue != null)
+            {
+                foundCustomers = await _cAccess.GetCustomers(tokenValue);
+                if (_cAccess.CurrentHttpStatusCode == HttpStatusCode.Unauthorized)
+                {
+                    currentState = TokenState.Invalid;
+                }
+            }
+            else
+            {
+                currentState = TokenState.Invalid;
+            }
+            if (currentState == TokenState.Invalid)
+            {
+                tokenValue = await GetToken(currentState);
+                if (tokenValue != null)
+                {
+                    foundCustomers = await _cAccess.GetCustomers(tokenValue);
+                }
+            }
+            return foundCustomers;
+
+        }
+
+        /*public async Task<List<Customer>?> GetAllCustomers()
+        {
+            List<Customer>? foundCustomers = null;
             if (_cAccess != null)
             {
                 foundCustomers = await _cAccess.GetCustomers();
             }
+
             return foundCustomers;
-        }
+        }*/
 
         public async Task<int> SaveCustomer(string fName, string lName, string email, string mPhone)
         {
             Customer newCustomer = new(fName, lName, email, mPhone);
-            int insertedId = await _cAccess.SaveCustomer(newCustomer);
+            int insertedId = await _cAccess.SaveCustomer(null, newCustomer);
             return insertedId;
         }
         public async Task<bool> DeleteCustomer(int customerId)
@@ -67,6 +100,13 @@ namespace BowlingDesktopClient.ControlLayer
 
             return foundCustomer;
         }
+        private async Task<string?> GetToken(TokenState useState)
+        {
+            TokenManager tokenHelp = new TokenManager();
+            string? foundToken = await tokenHelp.GetToken(useState);
+            return foundToken;
+        }
+
 
 
     }

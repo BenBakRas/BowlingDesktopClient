@@ -11,13 +11,15 @@ namespace BowlingDesktopClient.ServiceLayer
     public class CustomerServiceAccess : ICustomerAccess
     {
         readonly IServiceConnection _customerService;
-        readonly String _serviceBaseUrl = "https://localhost:7197/api/customers";
+        readonly String _serviceBaseUrl = "https://localhost:7197/api/customers/";
+        static readonly string authenType = "Bearer";
+        public HttpStatusCode CurrentHttpStatusCode { get; set; }
         public CustomerServiceAccess()
         {
             _customerService = new ServiceConnection(_serviceBaseUrl);
         }
-
-        public async Task<List<Customer>?> GetCustomers(int id = -1)
+        //Method to retrieve customers
+        public async Task<List<Customer>?>? GetCustomers(string tokenToUse, int id = -1)
         {
             List<Customer>? customersFromService = null;
 
@@ -26,40 +28,54 @@ namespace BowlingDesktopClient.ServiceLayer
             {
                 _customerService.UseUrl += id.ToString();
             }
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _customerService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _customerService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
 
-            try
+            if (_customerService != null)
             {
-                var serviceResponse = await _customerService.CallServiceGet();
-                bool wasResponse = (serviceResponse != null);
-                if (wasResponse && serviceResponse.IsSuccessStatusCode)
+                try
                 {
-                    var content = await serviceResponse.Content.ReadAsStringAsync();
-                    customersFromService = JsonConvert.DeserializeObject<List<Customer>>(content);
-                }
-                else
-                {
-                    if (wasResponse && serviceResponse.StatusCode == HttpStatusCode.NoContent)
+                    var serviceResponse = await _customerService.CallServiceGet();
+                    bool wasResponse = (serviceResponse != null);
+                    if (wasResponse && serviceResponse.IsSuccessStatusCode)
                     {
-                        customersFromService = new List<Customer>();
+                        var content = await serviceResponse.Content.ReadAsStringAsync();
+                        customersFromService = JsonConvert.DeserializeObject<List<Customer>>(content);
                     }
                     else
                     {
-                        customersFromService = null;
+                        if (wasResponse && serviceResponse.StatusCode == HttpStatusCode.NoContent)
+                        {
+                            customersFromService = new List<Customer>();
+                        }
+                        else
+                        {
+                            customersFromService = null;
+                        }
                     }
                 }
-            }
-            catch
-            {
-                customersFromService = null;
-            }
 
+                catch
+                {
+                    customersFromService = null;
+                }
+
+            }
             return customersFromService;
+            
         }
-        public async Task<int> SaveCustomer(Customer customerToSave)
+        public async Task<int> SaveCustomer(string tokenToUse, Customer customerToSave)
         {
             int insertedCustomerId = -1;
             //
             _customerService.UseUrl = _customerService.BaseUrl;
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _customerService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _customerService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
+
             try
             {
                 var json = JsonConvert.SerializeObject(customerToSave);

@@ -72,31 +72,7 @@ namespace BowlingDesktopClient.GuiLayer
             return isValidInput;
         }
 
-        private async void buttonFindCusByPhone(object sender, EventArgs e)
-        {
-            string processText = "Good or Not";
-            string phone = textBoxFindBy.Text;
-            List<Booking>? fetchedBooking = await _bookingControl.FindBookingByCustomerPhone(phone);
-            if (fetchedBooking != null)
-            {
-                if (fetchedBooking != null)
-                {
-                    processText = "Ok";
-                }
-                else
-                {
-                    processText = "No customers found";
-                }
-            }
-            else
-            {
-                processText = "Failure: An error occurred";
-            }
-            labelProcessBooking.Text = processText;
-            listBoxBookings.DataSource = fetchedBooking;
-        }
-
-        private async void buttonFindAll_Click_1(object sender, EventArgs e)
+        private async void buttonFindAll_Click(object sender, EventArgs e)
         {
             string processText = "Good or Not";
             List<Booking>? fetchedBookings = await _bookingControl.GetAllBookings();
@@ -161,6 +137,30 @@ namespace BowlingDesktopClient.GuiLayer
             {
                 MessageBox.Show("Fejl ved sletning.");
             }
+        }
+
+        private async void buttonFindCustomerByPhone_Click(object sender, EventArgs e)
+        {
+            string processText = "Good or Not";
+            string phone = textBoxFindBy.Text;
+            List<Booking>? fetchedBooking = await _bookingControl.FindBookingByCustomerPhone(phone);
+            if (fetchedBooking != null)
+            {
+                if (fetchedBooking != null)
+                {
+                    processText = "Ok";
+                }
+                else
+                {
+                    processText = "No customers found";
+                }
+            }
+            else
+            {
+                processText = "Failure: An error occurred";
+            }
+            labelProcessBooking.Text = processText;
+            listBoxBookings.DataSource = fetchedBooking;
         }
     }
 }
