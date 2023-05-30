@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,8 @@ namespace BowlingDesktopClient.ServiceLayer
     {
         readonly IServiceConnection _priceService;
         readonly String _serviceBaseUrl = "https://localhost:7197/api/prices";
+        static readonly string authenType = "Bearer";
+        public HttpStatusCode CurrentHttpStatusCode { get; set; }
         public PriceServiceAccess()
         {
             _priceService = new ServiceConnection(_serviceBaseUrl);
@@ -70,11 +73,15 @@ namespace BowlingDesktopClient.ServiceLayer
             }
             return pricesFromService;
         }
-        public async Task<int> SavePrice(Price priceToSave)
+        public async Task<int> SavePrice(string tokenToUse, Price priceToSave)
         {
             int insertedPriceId = -1;
             //
             _priceService.UseUrl = _priceService.BaseUrl;
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _priceService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _priceService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
             try
             {
                 var json = JsonConvert.SerializeObject(priceToSave);
@@ -101,10 +108,14 @@ namespace BowlingDesktopClient.ServiceLayer
             }
             return insertedPriceId;
         }
-        public async Task<Price?> FindPriceById(int priceId)
+        public async Task<Price?> FindPriceById(string tokenToUse, int priceId)
         {
             Price? foundPrice = null;
             _priceService.UseUrl = $"{_priceService.BaseUrl}/{priceId}";
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _priceService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _priceService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
 
             try
             {
@@ -122,10 +133,14 @@ namespace BowlingDesktopClient.ServiceLayer
 
             return foundPrice;
         }
-        public async Task<bool> UpdatePrice(int id, Price priceToUpdate)
+        public async Task<bool> UpdatePrice(string tokenToUse, int id, Price priceToUpdate)
         {
             bool isUpdated = false;
             _priceService.UseUrl = $"{_priceService.BaseUrl}/{id}";
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _priceService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _priceService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
 
             try
             {
@@ -146,11 +161,14 @@ namespace BowlingDesktopClient.ServiceLayer
             return isUpdated;
         }
 
-        public async Task<bool> DeletePrice(int id)
+        public async Task<bool> DeletePrice(string tokenToUse, int id)
         {
             bool isDeleted = false;
             _priceService.UseUrl = $"{_priceService.BaseUrl}/{id}";
-
+            // Must add Bearer token to request header
+            string bearerTokenValue = authenType + " " + tokenToUse;
+            _priceService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
+            _priceService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
             try
             {
                 var serviceResponse = await _priceService.CallServiceDelete();

@@ -71,7 +71,7 @@ namespace BowlingDesktopClient.GuiLayer
             listBoxBookings.DataSource = fetchedBookings;
         }
 
-        private async void buttonCreateBooking_Click_2(object sender, EventArgs e)
+        private async void buttonCreateBooking_Click(object sender, EventArgs e)
         {
             int insertedId = -1;
             string messageText;
@@ -98,7 +98,7 @@ namespace BowlingDesktopClient.GuiLayer
             labelProcessCreateBooking.Text = messageText;
         }
 
-        private async void buttonDeleteBooking_Click_1(object sender, EventArgs e)
+        private async void buttonDeleteBooking_Click(object sender, EventArgs e)
         {
             int bookingId = int.Parse(textBoxDeleteBooking.Text);
 
@@ -108,20 +108,17 @@ namespace BowlingDesktopClient.GuiLayer
             {
                 MessageBox.Show("Booking slettet.");
             }
-            else
-            {
-                MessageBox.Show("Fejl ved sletning.");
-            }
+          
         }
 
-        private async void buttonFindCustomerByPhone_Click(object sender, EventArgs e)
+        private async void buttonFindCustomerByPhone_Click_1(object sender, EventArgs e)
         {
             bool foundCustomer = false;
             string processText = "Good or Not";
             string phone = textBoxFindBy.Text;
 
             Customer cus = await _cusControl.FindCustomerByPhone(phone);
-            if (!String.IsNullOrEmpty(phone))
+            if (cus == null || cus.Phone.Length < 5)
             {
                 MessageBox.Show("Der er ikke en kunde med dette nummer.");
             }

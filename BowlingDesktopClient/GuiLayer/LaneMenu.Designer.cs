@@ -28,218 +28,215 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            buttonCreateLane = new Button();
-            buttonGetAllLanes = new Button();
-            buttonGetLane = new Button();
-            textBoxFindBy = new TextBox();
-            listBoxLanes = new ListBox();
-            groupBoxUpdateLane = new GroupBox();
-            buttonUpdateLane = new Button();
-            textBoxNewLaneNumber = new TextBox();
-            label2 = new Label();
-            textBoxFindByID = new TextBox();
-            label1 = new Label();
-            labelProcessText = new Label();
-            groupBox2 = new GroupBox();
-            buttonDeleteLane = new Button();
-            textBoxLaneToDelete = new TextBox();
-            label3 = new Label();
-            groupBox1.SuspendLayout();
-            groupBoxUpdateLane.SuspendLayout();
-            groupBox2.SuspendLayout();
-            SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonCreateLane = new System.Windows.Forms.Button();
+            this.buttonGetAllLanes = new System.Windows.Forms.Button();
+            this.buttonGetLane = new System.Windows.Forms.Button();
+            this.textBoxFindBy = new System.Windows.Forms.TextBox();
+            this.listBoxLanes = new System.Windows.Forms.ListBox();
+            this.groupBoxUpdateLane = new System.Windows.Forms.GroupBox();
+            this.buttonUpdateLane = new System.Windows.Forms.Button();
+            this.textBoxNewLaneNumber = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxFindByID = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelProcessText = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonDeleteLane = new System.Windows.Forms.Button();
+            this.textBoxLaneToDelete = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
+            this.groupBoxUpdateLane.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(buttonCreateLane);
-            groupBox1.Controls.Add(buttonGetAllLanes);
-            groupBox1.Controls.Add(buttonGetLane);
-            groupBox1.Controls.Add(textBoxFindBy);
-            groupBox1.Controls.Add(listBoxLanes);
-            groupBox1.Location = new Point(14, 16);
-            groupBox1.Margin = new Padding(3, 4, 3, 4);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(550, 535);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Find Bane";
+            this.groupBox1.Controls.Add(this.buttonCreateLane);
+            this.groupBox1.Controls.Add(this.buttonGetAllLanes);
+            this.groupBox1.Controls.Add(this.buttonGetLane);
+            this.groupBox1.Controls.Add(this.textBoxFindBy);
+            this.groupBox1.Controls.Add(this.listBoxLanes);
+            this.groupBox1.Location = new System.Drawing.Point(14, 16);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(550, 535);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Find Bane";
             // 
             // buttonCreateLane
             // 
-            buttonCreateLane.Location = new Point(450, 42);
-            buttonCreateLane.Name = "buttonCreateLane";
-            buttonCreateLane.Size = new Size(94, 29);
-            buttonCreateLane.TabIndex = 4;
-            buttonCreateLane.Text = "Opret Bane";
-            buttonCreateLane.UseVisualStyleBackColor = true;
-            buttonCreateLane.Click += buttonCreateLane_Click_1;
+            this.buttonCreateLane.Location = new System.Drawing.Point(450, 42);
+            this.buttonCreateLane.Name = "buttonCreateLane";
+            this.buttonCreateLane.Size = new System.Drawing.Size(94, 29);
+            this.buttonCreateLane.TabIndex = 4;
+            this.buttonCreateLane.Text = "Opret Bane";
+            this.buttonCreateLane.UseVisualStyleBackColor = true;
             // 
             // buttonGetAllLanes
             // 
-            buttonGetAllLanes.Location = new Point(297, 41);
-            buttonGetAllLanes.Name = "buttonGetAllLanes";
-            buttonGetAllLanes.Size = new Size(94, 29);
-            buttonGetAllLanes.TabIndex = 3;
-            buttonGetAllLanes.Text = "Find alle";
-            buttonGetAllLanes.UseVisualStyleBackColor = true;
-            buttonGetAllLanes.Click += buttonGetAllLanes_Click_1;
+            this.buttonGetAllLanes.Location = new System.Drawing.Point(297, 41);
+            this.buttonGetAllLanes.Name = "buttonGetAllLanes";
+            this.buttonGetAllLanes.Size = new System.Drawing.Size(94, 29);
+            this.buttonGetAllLanes.TabIndex = 3;
+            this.buttonGetAllLanes.Text = "Find alle";
+            this.buttonGetAllLanes.UseVisualStyleBackColor = true;
             // 
             // buttonGetLane
             // 
-            buttonGetLane.Location = new Point(187, 40);
-            buttonGetLane.Margin = new Padding(3, 4, 3, 4);
-            buttonGetLane.Name = "buttonGetLane";
-            buttonGetLane.Size = new Size(104, 31);
-            buttonGetLane.TabIndex = 2;
-            buttonGetLane.Text = "Søg";
-            buttonGetLane.UseVisualStyleBackColor = true;
-            buttonGetLane.Click += buttonGetLane_Click;
+            this.buttonGetLane.Location = new System.Drawing.Point(187, 40);
+            this.buttonGetLane.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonGetLane.Name = "buttonGetLane";
+            this.buttonGetLane.Size = new System.Drawing.Size(104, 31);
+            this.buttonGetLane.TabIndex = 2;
+            this.buttonGetLane.Text = "Søg";
+            this.buttonGetLane.UseVisualStyleBackColor = true;
+            this.buttonGetLane.Click += new System.EventHandler(this.buttonGetLane_Click_1);
             // 
             // textBoxFindBy
             // 
-            textBoxFindBy.Location = new Point(7, 41);
-            textBoxFindBy.Margin = new Padding(3, 4, 3, 4);
-            textBoxFindBy.Name = "textBoxFindBy";
-            textBoxFindBy.Size = new Size(173, 27);
-            textBoxFindBy.TabIndex = 1;
+            this.textBoxFindBy.Location = new System.Drawing.Point(7, 41);
+            this.textBoxFindBy.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxFindBy.Name = "textBoxFindBy";
+            this.textBoxFindBy.Size = new System.Drawing.Size(173, 27);
+            this.textBoxFindBy.TabIndex = 1;
             // 
             // listBoxLanes
             // 
-            listBoxLanes.FormattingEnabled = true;
-            listBoxLanes.ItemHeight = 20;
-            listBoxLanes.Location = new Point(7, 197);
-            listBoxLanes.Margin = new Padding(3, 4, 3, 4);
-            listBoxLanes.Name = "listBoxLanes";
-            listBoxLanes.Size = new Size(442, 324);
-            listBoxLanes.TabIndex = 0;
+            this.listBoxLanes.FormattingEnabled = true;
+            this.listBoxLanes.ItemHeight = 20;
+            this.listBoxLanes.Location = new System.Drawing.Point(7, 197);
+            this.listBoxLanes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listBoxLanes.Name = "listBoxLanes";
+            this.listBoxLanes.Size = new System.Drawing.Size(442, 324);
+            this.listBoxLanes.TabIndex = 0;
             // 
             // groupBoxUpdateLane
             // 
-            groupBoxUpdateLane.Controls.Add(buttonUpdateLane);
-            groupBoxUpdateLane.Controls.Add(textBoxNewLaneNumber);
-            groupBoxUpdateLane.Controls.Add(label2);
-            groupBoxUpdateLane.Controls.Add(textBoxFindByID);
-            groupBoxUpdateLane.Controls.Add(label1);
-            groupBoxUpdateLane.Location = new Point(605, 16);
-            groupBoxUpdateLane.Margin = new Padding(3, 4, 3, 4);
-            groupBoxUpdateLane.Name = "groupBoxUpdateLane";
-            groupBoxUpdateLane.Padding = new Padding(3, 4, 3, 4);
-            groupBoxUpdateLane.Size = new Size(295, 201);
-            groupBoxUpdateLane.TabIndex = 1;
-            groupBoxUpdateLane.TabStop = false;
-            groupBoxUpdateLane.Text = "Opdater Bane";
+            this.groupBoxUpdateLane.Controls.Add(this.buttonUpdateLane);
+            this.groupBoxUpdateLane.Controls.Add(this.textBoxNewLaneNumber);
+            this.groupBoxUpdateLane.Controls.Add(this.label2);
+            this.groupBoxUpdateLane.Controls.Add(this.textBoxFindByID);
+            this.groupBoxUpdateLane.Controls.Add(this.label1);
+            this.groupBoxUpdateLane.Location = new System.Drawing.Point(605, 16);
+            this.groupBoxUpdateLane.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxUpdateLane.Name = "groupBoxUpdateLane";
+            this.groupBoxUpdateLane.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxUpdateLane.Size = new System.Drawing.Size(295, 201);
+            this.groupBoxUpdateLane.TabIndex = 1;
+            this.groupBoxUpdateLane.TabStop = false;
+            this.groupBoxUpdateLane.Text = "Opdater Bane";
             // 
             // buttonUpdateLane
             // 
-            buttonUpdateLane.Location = new Point(99, 133);
-            buttonUpdateLane.Name = "buttonUpdateLane";
-            buttonUpdateLane.Size = new Size(94, 29);
-            buttonUpdateLane.TabIndex = 4;
-            buttonUpdateLane.Text = "Opdater Lane";
-            buttonUpdateLane.UseVisualStyleBackColor = true;
-            buttonUpdateLane.Click += buttonUpdateLane_Click_1;
+            this.buttonUpdateLane.Location = new System.Drawing.Point(99, 133);
+            this.buttonUpdateLane.Name = "buttonUpdateLane";
+            this.buttonUpdateLane.Size = new System.Drawing.Size(94, 29);
+            this.buttonUpdateLane.TabIndex = 4;
+            this.buttonUpdateLane.Text = "Opdater Lane";
+            this.buttonUpdateLane.UseVisualStyleBackColor = true;
             // 
             // textBoxNewLaneNumber
             // 
-            textBoxNewLaneNumber.Location = new Point(80, 100);
-            textBoxNewLaneNumber.Name = "textBoxNewLaneNumber";
-            textBoxNewLaneNumber.Size = new Size(125, 27);
-            textBoxNewLaneNumber.TabIndex = 3;
+            this.textBoxNewLaneNumber.Location = new System.Drawing.Point(80, 100);
+            this.textBoxNewLaneNumber.Name = "textBoxNewLaneNumber";
+            this.textBoxNewLaneNumber.Size = new System.Drawing.Size(125, 27);
+            this.textBoxNewLaneNumber.TabIndex = 3;
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(50, 77);
-            label2.Name = "label2";
-            label2.Size = new Size(180, 20);
-            label2.TabIndex = 2;
-            label2.Text = "Indtast nye Bane Nummer";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(50, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(180, 20);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Indtast nye Bane Nummer";
             // 
             // textBoxFindByID
             // 
-            textBoxFindByID.Location = new Point(80, 47);
-            textBoxFindByID.Name = "textBoxFindByID";
-            textBoxFindByID.Size = new Size(125, 27);
-            textBoxFindByID.TabIndex = 1;
+            this.textBoxFindByID.Location = new System.Drawing.Point(80, 47);
+            this.textBoxFindByID.Name = "textBoxFindByID";
+            this.textBoxFindByID.Size = new System.Drawing.Size(125, 27);
+            this.textBoxFindByID.TabIndex = 1;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(91, 24);
-            label1.Name = "label1";
-            label1.Size = new Size(102, 20);
-            label1.TabIndex = 0;
-            label1.Text = "Skriv banes ID";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(91, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(102, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Skriv banes ID";
             // 
             // labelProcessText
             // 
-            labelProcessText.AutoSize = true;
-            labelProcessText.Location = new Point(21, 555);
-            labelProcessText.Name = "labelProcessText";
-            labelProcessText.Size = new Size(93, 20);
-            labelProcessText.TabIndex = 2;
-            labelProcessText.Text = "Good or Not";
+            this.labelProcessText.AutoSize = true;
+            this.labelProcessText.Location = new System.Drawing.Point(21, 555);
+            this.labelProcessText.Name = "labelProcessText";
+            this.labelProcessText.Size = new System.Drawing.Size(93, 20);
+            this.labelProcessText.TabIndex = 2;
+            this.labelProcessText.Text = "Good or Not";
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(buttonDeleteLane);
-            groupBox2.Controls.Add(textBoxLaneToDelete);
-            groupBox2.Controls.Add(label3);
-            groupBox2.Location = new Point(605, 276);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(283, 275);
-            groupBox2.TabIndex = 3;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Slet bane";
+            this.groupBox2.Controls.Add(this.buttonDeleteLane);
+            this.groupBox2.Controls.Add(this.textBoxLaneToDelete);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Location = new System.Drawing.Point(605, 276);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(283, 275);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Slet bane";
             // 
             // buttonDeleteLane
             // 
-            buttonDeleteLane.Location = new Point(99, 97);
-            buttonDeleteLane.Name = "buttonDeleteLane";
-            buttonDeleteLane.Size = new Size(94, 29);
-            buttonDeleteLane.TabIndex = 2;
-            buttonDeleteLane.Text = "Slet bane";
-            buttonDeleteLane.UseVisualStyleBackColor = true;
-            buttonDeleteLane.Click += buttonDeleteLane_Click_1;
+            this.buttonDeleteLane.Location = new System.Drawing.Point(99, 97);
+            this.buttonDeleteLane.Name = "buttonDeleteLane";
+            this.buttonDeleteLane.Size = new System.Drawing.Size(94, 29);
+            this.buttonDeleteLane.TabIndex = 2;
+            this.buttonDeleteLane.Text = "Slet bane";
+            this.buttonDeleteLane.UseVisualStyleBackColor = true;
             // 
             // textBoxLaneToDelete
             // 
-            textBoxLaneToDelete.Location = new Point(80, 64);
-            textBoxLaneToDelete.Name = "textBoxLaneToDelete";
-            textBoxLaneToDelete.Size = new Size(125, 27);
-            textBoxLaneToDelete.TabIndex = 1;
+            this.textBoxLaneToDelete.Location = new System.Drawing.Point(80, 64);
+            this.textBoxLaneToDelete.Name = "textBoxLaneToDelete";
+            this.textBoxLaneToDelete.Size = new System.Drawing.Size(125, 27);
+            this.textBoxLaneToDelete.TabIndex = 1;
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(91, 41);
-            label3.Name = "label3";
-            label3.Size = new Size(102, 20);
-            label3.TabIndex = 0;
-            label3.Text = "Skriv banes ID";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(91, 41);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Skriv banes ID";
             // 
             // LaneMenu
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
-            Controls.Add(groupBox2);
-            Controls.Add(labelProcessText);
-            Controls.Add(groupBoxUpdateLane);
-            Controls.Add(groupBox1);
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "LaneMenu";
-            Text = "LaneMenu";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBoxUpdateLane.ResumeLayout(false);
-            groupBoxUpdateLane.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(914, 600);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.labelProcessText);
+            this.Controls.Add(this.groupBoxUpdateLane);
+            this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Name = "LaneMenu";
+            this.Text = "LaneMenu";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBoxUpdateLane.ResumeLayout(false);
+            this.groupBoxUpdateLane.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

@@ -11,9 +11,9 @@ namespace BowlingDesktopClient.ServiceLayer.Interfaces
     public interface IBookingAccess
     {
         Task<List<Booking>?>? GetBookings(string tokenToUse, int id = -1);
-        Task<int> SaveBooking(string tokenToUse, Booking bookingToSave);
+        Task<int> SaveBooking(Booking bookingToSave);
         Task<List<Booking>?> FindBookingsByCustomerPhone(string tokenToUse, string phone);
-        Task<Booking?> FindBookingById(string tokenToUse, int id);
+        Task<Booking?> FindBookingById(int id);
         Task<bool> DeleteBooking(string tokenToUse, int bookingId);
         HttpStatusCode CurrentHttpStatusCode { get; set; }
     }

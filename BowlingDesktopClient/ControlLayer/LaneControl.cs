@@ -20,6 +20,7 @@ namespace BowlingDesktopClient.ControlLayer
             _lAccess = new LaneServiceAccess();
         }
 
+        //Method to get all lanes
         public async Task<List<Lane>?> GetAllLanes()
         {
             List<Lane>? foundLanes = null;
@@ -49,7 +50,7 @@ namespace BowlingDesktopClient.ControlLayer
 
             return foundLanes;
         }
-
+        //Method to save a lane
         public async Task<int> SaveLane(int LaneNumber)
         {
             int insertedId = -1;
@@ -81,6 +82,7 @@ namespace BowlingDesktopClient.ControlLayer
 
             return insertedId;
         }
+        //Method to find a lane by it's ID
         public async Task<Lane?> FindLaneById(int laneId)
         {
             Lane? foundLane = null;
@@ -110,6 +112,7 @@ namespace BowlingDesktopClient.ControlLayer
 
             return foundLane;
         }
+        //Method to update a lane by it's ID
         public async Task<bool> UpdateLane(int id, Lane laneToUpdate) 
         {
             bool isUpdated = false;
@@ -140,7 +143,7 @@ namespace BowlingDesktopClient.ControlLayer
             return isUpdated;
         }
 
-
+        //Method to delete a lane by it's ID
         public async Task<bool> DeleteLane(int laneId)
         {
             bool isDeleted = false;
@@ -169,6 +172,7 @@ namespace BowlingDesktopClient.ControlLayer
 
             return isDeleted;
         }
+        //Gets jwt token
         private async Task<string?> GetToken(TokenState useState)
         {
             TokenManager tokenHelp = new TokenManager();

@@ -23,7 +23,7 @@ namespace BowlingDesktopClient.GuiLayer
             _customerControl = new CustomerControl();
         }
 
-        private async void buttonGetCustomers_Click_1(object sender, EventArgs e)
+        private async void buttonGetCustomers_Click(object sender, EventArgs e)
         {
             string processText = "Good or Not";
             List<Customer>? fethcedCustomers = await _customerControl.GetAllCustomers();
@@ -45,33 +45,7 @@ namespace BowlingDesktopClient.GuiLayer
             labelCustomerText.Text = processText;
             listBoxCustomers.DataSource = fethcedCustomers;
         }
-
-        private async void buttonGetCusByPhone(object sender, EventArgs e)
-        {
-            string processText = "Good or Not";
-            List<Customer> fetchedCustomer = new List<Customer> { };
-            Customer cus = await _customerControl.FindCustomerByPhone(textBoxFindBy.Text);
-            fetchedCustomer.Add(cus);
-            if (fetchedCustomer != null)
-            {
-                if (fetchedCustomer != null)
-                {
-                    processText = "Ok";
-                }
-                else
-                {
-                    processText = "No customers found";
-                }
-            }
-            else
-            {
-                processText = "Failure: An error occurred";
-            }
-            labelCustomerText.Text = processText;
-            listBoxCustomers.DataSource = fetchedCustomer;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             _ccMenu.ShowDialog();
         }
@@ -157,7 +131,7 @@ namespace BowlingDesktopClient.GuiLayer
 
         }
 
-        private async void buttonDeleteCustomer_Click_1(object sender, EventArgs e)
+        private async void buttonDeleteCustomer_Click(object sender, EventArgs e)
         {
             string customerId = textBoxDeleteCustomer.Text;
 
@@ -183,6 +157,38 @@ namespace BowlingDesktopClient.GuiLayer
 
         }
 
+        private async void buttonFindCustomerByPhone_Click(object sender, EventArgs e)
+        {
+            string processText = "Good or Not";
+            List<Customer> fetchedCustomer = new List<Customer> { };
+            Customer cus = await _customerControl.FindCustomerByPhone(textBoxFindBy.Text);
+            if (cus.Phone == null)
+            {
+                MessageBox.Show("Der eksistere ikke en bane med det ID");
+            }
+            else
+            {
+                fetchedCustomer.Add(cus);
+                if (fetchedCustomer != null)
+                {
+                    if (fetchedCustomer != null)
+                    {
+                        processText = "Ok";
+                    }
+                    else
+                    {
+                        processText = "No customers found";
+                    }
+                }
+                else
+                {
+                    processText = "Failure: An error occurred";
+                }
+                labelCustomerText.Text = processText;
+                listBoxCustomers.DataSource = fetchedCustomer;
+            }
+
+        }
     }
 
 }

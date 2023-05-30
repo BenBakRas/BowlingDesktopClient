@@ -79,14 +79,9 @@ namespace BowlingDesktopClient.ServiceLayer
             }
             return bookingsFromService;
         }
-        public async Task<int> SaveBooking(string tokenToUse, Booking bookingToSave)
+        public async Task<int> SaveBooking(Booking bookingToSave)
         {
             int insertedBookingId = -1;
-
-            // Must add Bearer token to request header
-            string bearerTokenValue = authenType + " " + tokenToUse;
-            _bookingService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
-            _bookingService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
             try
             {
                 if (bookingToSave.Customer != null)
@@ -132,7 +127,7 @@ namespace BowlingDesktopClient.ServiceLayer
             try
             {
                 // First, find the customer by phone number
-                Customer? customer = await FindCustomerByPhone(null, phone);
+                Customer? customer = await FindCustomerByPhone(phone);
 
                 if (customer != null)
                 {
@@ -156,13 +151,9 @@ namespace BowlingDesktopClient.ServiceLayer
 
             return bookings;
         }
-        public async Task<Customer?> FindCustomerByPhone(string tokenToUse, string phone)
+        public async Task<Customer?> FindCustomerByPhone(string phone)
         {
             _customerService.UseUrl = $"{_customerService.BaseUrl}/{phone}";
-            // Must add Bearer token to request header
-            string bearerTokenValue = authenType + " " + tokenToUse;
-            _bookingService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
-            _bookingService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
             try
             {
                 var serviceResponse = await _customerService.CallServiceGet();
@@ -191,14 +182,10 @@ namespace BowlingDesktopClient.ServiceLayer
             return null; // Return null if the customer is not found or if there was an error
         }
 
-        public async Task<Booking?> FindBookingById(string tokenToUse, int id)
+        public async Task<Booking?> FindBookingById(int id)
         {
             Booking? foundBooking = null;
             _bookingService.UseUrl = $"{_bookingService.BaseUrl}/{id}";
-            // Must add Bearer token to request header
-            string bearerTokenValue = authenType + " " + tokenToUse;
-            _bookingService.HttpEnabler.DefaultRequestHeaders.Remove("Authorization");   // To avoid more Authorization headers
-            _bookingService.HttpEnabler.DefaultRequestHeaders.Add("Authorization", bearerTokenValue);
             try
             {
                 var serviceResponse = await _bookingService.CallServiceGet();
